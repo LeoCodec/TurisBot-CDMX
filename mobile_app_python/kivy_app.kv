@@ -1,0 +1,112 @@
+#:import dp kivy.metrics.dp
+
+
+#   PALETA DE COLORES LIGHT
+
+#:set COLOR_BG 1, 1, 1, 1                # Fondo blanco
+#:set COLOR_CARD 1, 1, 1, 1              # Tarjetas blancas
+#:set COLOR_TEXT 0.15, 0.15, 0.15, 1     # Gris oscuro #212121
+#:set COLOR_HINT 0.45, 0.45, 0.45, 1     # Gris medio #757575
+#:set COLOR_PRIMARY 0.91, 0.12, 0.39, 1  # Rosa CDMX #E91E63
+#:set COLOR_INPUT 0.96, 0.96, 0.96, 1    # Gris muy claro
+#:set COLOR_BORDER 0.80, 0.80, 0.80, 1   # Gris borde
+#:set COLOR_USER 0.13, 0.47, 0.98, 1     # Azul usuario (Google blue)
+#:set COLOR_BOT 0.16, 0.69, 0.36, 1      # Verde bot
+
+
+
+#   INTERFAZ PRINCIPAL LIGHT
+
+
+BoxLayout:
+    orientation: "vertical"
+    padding: dp(16)
+    spacing: dp(12)
+
+    canvas.before:
+        Color:
+            rgba: COLOR_BG          # Fondo completamente blanco
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # AREA DEL CHAT
+    ScrollView:
+        size_hint_y: 0.85
+        bar_width: dp(6)
+        scroll_type: ['bars', 'content']
+        do_scroll_x: False
+
+        Label:
+            id: chat_label
+            text: app.chat_history
+            markup: True
+            font_size: "17sp"
+            color: COLOR_TEXT         # Texto oscuro
+            size_hint_y: None
+            height: self.texture_size[1]
+            text_size: self.width - dp(20), None
+            padding: dp(10), dp(10)
+
+
+    # INPUT Y BOTÓN
+    BoxLayout:
+        size_hint_y: 0.15
+        spacing: dp(10)
+
+        TextInput:
+            id: input_box
+            hint_text: "Escribe tu mensaje…"
+            multiline: False
+            background_color: COLOR_INPUT    # Input gris claro
+            foreground_color: COLOR_TEXT
+            cursor_color: COLOR_TEXT
+            hint_text_color: COLOR_HINT
+            padding_x: dp(12)
+            font_size: "17sp"
+            border: (0,0,0,0)
+
+        Button:
+            text: "Enviar"
+            font_size: "17sp"
+            background_color: COLOR_PRIMARY  # Rosa CDMX
+            color: 1, 1, 1, 1
+            bold: True
+            on_release:
+                app.enviar_mensaje(input_box.text)
+
+
+
+    #   SELECTOR DE IDIOMA CON BANDERAS
+
+    BoxLayout:
+        size_hint_y: 0.12
+        spacing: dp(10)
+
+        Button:
+            background_normal: "assets/icons/mx.png"
+            background_down: "assets/icons/mx.png"
+            size_hint: None, None
+            size: dp(45), dp(45)
+            on_release: app.cambiar_idioma("es")
+
+        Button:
+            background_normal: "assets/icons/us.png"
+            background_down: "assets/icons/us.png"
+            size_hint: None, None
+            size: dp(45), dp(45)
+            on_release: app.cambiar_idioma("en")
+
+        Button:
+            background_normal: "assets/icons/fr.png"
+            background_down: "assets/icons/fr.png"
+            size_hint: None, None
+            size: dp(45), dp(45)
+            on_release: app.cambiar_idioma("fr")
+
+        Button:
+            background_normal: "assets/icons/de.png"
+            background_down: "assets/icons/de.png"
+            size_hint: None, None
+            size: dp(45), dp(45)
+            on_release: app.cambiar_idioma("de")
