@@ -1,182 +1,35 @@
-# 🏙️ TurisBot CDMX  
-Asistente inteligente de turismo, transporte y seguridad para la Ciudad de México.  
-Incluye **aplicación web (Flask)** y **aplicación móvil (Kivy)** conectadas al mismo backend.
+<div align="center"><!-- Asegúrate de que la imagen esté en tu repo --><img src="web_app/static/imagen.png" alt="Logo TurisBot" width="120" height="120">TurisBot CDMXTu asistente inteligente para explorar la Ciudad de México<!-- ESTADÍSTICAS DE LENGUAJE REALES --><p><a href="#-características">Características</a> •<a href="#-estructura">Estructura</a> •<a href="#-instalación">Instalación</a> •<a href="#-uso">Uso</a> •<a href="#-contacto">Contacto</a></p></div>🚀 DescripciónTurisBot CDMX es una solución integral (Web + Móvil) diseñada para asistir a turistas y ciudadanos de la CDMX. Utiliza un motor de procesamiento de lenguaje natural (AIML) para responder preguntas sobre turismo, transporte y seguridad en tiempo real.El proyecto demuestra la integración de una API RESTful en Flask con clientes multiplataforma (Navegador Web y App Android nativa).✨ CaracterísticasFuncionalidadDescripción🤖 Chatbot IARespuestas automáticas basadas en patrones AIML.🌍 MultilenguajeSoporte instantáneo para Español 🇲🇽, Inglés 🇺🇸, Alemán 🇩🇪 y Francés 🇫🇷.🚇 Info TransporteTarifas y horarios de Metro, Metrobús y Ecobici.🏛️ TurismoRecomendaciones de museos, zonas arqueológicas y gastronomía.🌗 Modo OscuroInterfaz adaptable (Claro/Oscuro) para mejorar la lectura.📱 Cross-PlatformFunciona en cualquier navegador y como App nativa.📂 Estructura del ProyectoTurisBot-CDMX/
+├── 🌍 web_app/                  (Backend & Web Frontend)
+│   ├── app.py                   # Servidor Flask Principal
+│   ├── aiml/                    # 🧠 Cerebro del Chatbot
+│   │   ├── main.aiml            # Reglas generales
+│   │   ├── transporte.aiml      # Base de conocimiento: Transporte
+│   │   └── ...
+│   ├── static/                  # Estilos CSS y Scripts JS
+│   ├── templates/               # HTML5
+│   └── textos_chatbot.xml       # Textos i18n (Idiomas)
+│
+└── 📱 mobile_app_python/        (Cliente Móvil Kivy)
+    ├── main.py                  # App Launcher
+    ├── kivy_app.kv              # UI Design Language
+    ├── buildozer.spec           # Configuración Android (APK)
+    └── utils/                   # Conectores API
+🛠️ InstalaciónPrerrequisitosPython 3.10 o superiorpip (Gestor de paquetes)1. Clonar y Configurar Entornogit clone [https://github.com/LeoCodec/TurisBot-CDMX.git](https://github.com/LeoCodec/TurisBot-CDMX.git)
+cd TurisBot-CDMX
 
-![Python](https://img.shields.io/badge/Python-45.4%25-blue)
-![JavaScript](https://img.shields.io/badge/JavaScript-17.7%25-yellow)
-![CSS](https://img.shields.io/badge/CSS-16.0%25-blueviolet)
-![HTML](https://img.shields.io/badge/HTML-11.3%25-orange)
-![KVLang](https://img.shields.io/badge/KVLang-9.6%25-green)
-
----
-
-## 📌 Descripción general
-
-TurisBot CDMX es un asistente conversacional desarrollado con:
-
-- **Python 3.12**
-- **Flask (para la Web App)**
-- **Kivy (para la App Móvil)**
-- **AIML (Artificial Intelligence Markup Language)**
-- **Requests** para comunicación entre aplicaciones
-
-El proyecto permite:
-
-✔ Información turística  
-✔ Localización de zonas interesantes  
-✔ Transporte público  
-✔ Consejos de seguridad  
-✔ Múltiples idiomas (es / en / de / fr)  
-✔ Tema claro / oscuro  
-✔ Banderas disponibles en el selector de idioma  
-✔ Integración web + móvil en tiempo real
-
----
-
-## ⚙️ Instalación
-
----
-
-### 🔧 1. Crear entorno virtual
-
-
-python3 -m venv venv
-source venv/bin/activate
-📦 2. Instalar dependencias
-Web App (Flask):
-bash
-Copiar código
-pip install flask python-aiml requests
-Mobile App (Kivy):
-bash
-Copiar código
+# Crear entorno virtual (Recomendado)
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
+2. Instalar DependenciasEl proyecto tiene dependencias separadas para Web y Móvil.Para el Servidor Web:cd web_app
+pip install -r requirements.txt
+Para la App Móvil:cd ../mobile_app_python
 pip install kivy requests
-🚀 Ejecución
-🌐 Web App (Flask)
-bash
-Copiar código
-cd web_app
+▶️ UsoPaso 1: Iniciar el Cerebro (Backend)Es necesario que el servidor esté corriendo para que el chatbot responda.# Desde la carpeta web_app/
 python app.py
-La app correrá en:
-
-http://127.0.0.1:5000
-
-http://TU-IP:5000 (ideal para conectarlo desde el celular)
-
-📱 App Móvil (Kivy)
-bash
-Copiar código
-cd mobile_app_python
+El servidor iniciará en: http://127.0.0.1:5000Paso 2: Usar el ClienteOpción A: Web BrowserAbre tu navegador y ve a http://localhost:5000.Opción B: App Móvil (Simulador)Abre una nueva terminal.# Desde mobile_app_python/
 python main.py
-Para generar un APK:
-
-bash
-Copiar código
-sudo apt install buildozer
-buildozer init
-buildozer -v android debug
-
-🧠 Inteligencia AIML
-El bot usa AIML para controlar las respuestas:
-
-main.aiml → respuestas generales
-
-turismo.aiml → lugares turísticos, museos, parques
-
-transporte.aiml → metro, metrobús, RTP, horarios
-
-seguridad.aiml → emergencias, contacto, precauciones
-
-Flask carga los AIML automáticamente.
-
-🎨 Temas: claro / oscuro
-Ambas apps soportan:
-
-✔ Tema claro
-Fondo blanco
-
-Texto oscuro
-
-Inputs en gris suave
-
-Botón azul
-
-✔ Tema oscuro
-Fondo #121212
-
-Texto blanco/gris claro
-
-Botones oscuros tipo Material
-
-La Web App guarda la preferencia con:
-
-javascript
-Copiar código
-localStorage.getItem("theme")
-La App móvil usa:
-
-scss
-Copiar código
-app.cambiar_tema()
-🌍 Selector de idioma con banderas
-Idiomas disponibles:
-
-Idioma	Bandera	Código
-Español	🇲🇽	es
-Inglés	🇺🇸	en
-Alemán	🇩🇪	de
-Francés	🇫🇷	fr
-
-El idioma cambia:
-
-Textos en la interfaz
-
-Placeholder del input
-
-Mensaje de bienvenida
-
-Respuestas AIML (si están definidas)
-
-🔗 Comunicación Web ↔ Móvil
-Ambas apps se comunican con el backend vía:
-
-bash
-Copiar código
-POST /api/chat
-Parámetros:
-
-ini
-Copiar código
-msg=texto_del_usuario
-lang=es|en|de|fr
-La app móvil utiliza requests.post().
-
-🧪 Sugerencias de prueba
-Iniciar el servidor Flask
-
-Probar conversación básica
-
-Cambiar tema claro/oscuro
-
-Cambiar idioma y verificar texto dinámico
-
-Conectar desde el teléfono a la IP local
-
-Ejecutar la app móvil y probar chat
-
-Revisar respuestas AIML
-
-📌 Notas importantes
-No usar Flask en producción sin WSGI (Gunicorn, Nginx)
-
-Buildozer solo funciona bien en Linux
-
-En Kivy, los colores se actualizan usando DictProperty
-
-Para agregar banderas en móvil puede usarse un footer con imágenes PNG
-
-✨ Autor
-Leo Cruz
-Desarrollador de software
-📧 leocode.contacto@gmail.com
-
+🧠 ¿Cómo funciona la IA? (AIML)El chatbot utiliza AIML (Artificial Intelligence Markup Language). El flujo de una conversación es:Input: Usuario escribe "¿Cuánto cuesta el metro?"Normalización: Python convierte a mayúsculas y quita acentos -> CUANTO CUESTA EL METRO.Matching: El motor busca en transporte.aiml:<category>
+    <pattern>CUANTO CUESTA EL METRO</pattern>
+    <template>El boleto cuesta 5 pesos.</template>
+</category>
+Output: El servidor devuelve la respuesta al cliente (Web o App).📸 Capturas de Pantalla<div align="center"><img src="web_app/static/Captura1.png" alt="Vista Web" width="400" style="border-radius:10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);"><!-- Agrega tus capturas aquí --></div>📞 Contacto y CréditosDesarrollado por Leo Cruz.📧 Email: leocode.contacto@gmail.com🐙 GitHub: @LeoCodecProyecto académico para la materia Sistemas Basados en Conocimiento.
