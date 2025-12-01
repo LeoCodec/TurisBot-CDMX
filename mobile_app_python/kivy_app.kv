@@ -2,27 +2,26 @@
 #:import Factory kivy.factory.Factory
 
 # =============================================================================
-# 1. PLANTILLA DE BANDERAS (GIGANTES PARA MÓVIL)
+# 1. PLANTILLA DE BANDERAS (LISTA COMPACTA)
 # =============================================================================
 <LenguajeOption@SpinnerOption>:
     background_normal: ''
     background_color: app.colores["container"]
     color: 0, 0, 0, 0             
     size_hint_y: None             
-    height: dp(60)                
+    height: dp(35)                
 
     Image:
         source: app.banderas.get(root.text.lower(), '')
+        size_hint: None, None
+        size: dp(35), dp(24) 
         center_x: root.center_x
         center_y: root.center_y
-        size_hint: None, None     
-        size: dp(50), dp(35)      
         allow_stretch: True
         keep_ratio: True
 
-# =============================================================================
-# 2. Estilos de Burbujas
-# =============================================================================
+
+# 2. Estilos de las Burbujas
 <BurbujaUsuario@Label>:
     size_hint_y: None
     height: self.texture_size[1] + dp(20)
@@ -50,9 +49,7 @@
             size: self.size
             radius: [10, 10, 10, 0]
 
-# =============================================================================
 # 3. Pantalla Principal
-# =============================================================================
 BoxLayout:
     orientation: "vertical"
     canvas.before:
@@ -62,10 +59,10 @@ BoxLayout:
             pos: self.pos
             size: self.size
 
-    # HEADER SUPERIOR
+    # HEADER SUPERIOR (También lo hacemos un poquito más compacto)
     BoxLayout:
         size_hint_y: None
-        height: dp(70)
+        height: dp(60)
         padding: dp(10)
         spacing: dp(5)
         
@@ -82,18 +79,18 @@ BoxLayout:
         # SELECTOR DE BANDERA
         RelativeLayout:
             size_hint_x: None
-            width: dp(60) 
+            width: dp(50) 
 
-            # Imagen Visual (Bandera actual)
+            #La Imagen Visual
             Image:
                 source: app.flag_src
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 size_hint: (None, None)
-                size: (dp(50), dp(35))
+                size: (dp(35), dp(24))
                 allow_stretch: True
                 keep_ratio: True
 
-            # Lista Desplegable (Spinner)
+            # El Spinner (Lista Desplegable)
             Spinner:
                 id: lang_spinner
                 text: "ES"
@@ -106,23 +103,20 @@ BoxLayout:
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 on_text: app.cambiar_idioma(self.text)
 
-        # --- AQUÍ ESTÁ EL CAMBIO DEL BOTÓN TEMA ---
-        # Botón Transparente con Imagen (Sol/Luna)
+        # BOTÓN TEMA
         Button:
             size_hint_x: None
-            width: dp(50)
+            width: dp(40) # También lo hacemos un poco más chico
             background_normal: '' 
-            background_color: (0,0,0,0) # Fondo invisible
+            background_color: (0,0,0,0)
             on_release: app.cambiar_tema()
 
             Image:
-                # LOGICA: Si es Dark, muestra SOL (para cambiar a luz). Si es Light, muestra LUNA.
                 source: "assets/sun.png" if app.tema_actual == 'dark' else "assets/moon.png"
                 center_x: self.parent.center_x
                 center_y: self.parent.center_y
-                size: dp(28), dp(28) # Tamaño del ícono
+                size: dp(24), dp(24)
                 allow_stretch: True
-        # ------------------------------------------
 
     # AREA DE CHAT
     ScrollView:
@@ -140,7 +134,7 @@ BoxLayout:
     # INPUT AREA
     BoxLayout:
         size_hint_y: None
-        height: dp(80) 
+        height: dp(70) 
         padding: dp(10)
         spacing: dp(10)
         canvas.before:
@@ -157,7 +151,7 @@ BoxLayout:
             background_color: (0,0,0,0)
             foreground_color: app.colores["text"]
             cursor_color: app.colores["cursor"]
-            font_size: dp(18) 
+            font_size: dp(16) 
             hint_text_color: [0.5, 0.5, 0.5, 1]
             padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
             on_text_validate: app.enviar_mensaje()
@@ -172,10 +166,10 @@ BoxLayout:
         Button:
             text: ">"
             size_hint_x: None
-            width: dp(60) 
+            width: dp(50) 
             background_normal: ''
             background_color: app.colores["btn_bg"]
             color: app.colores["btn_text"]
             bold: True
-            font_size: dp(28) 
+            font_size: dp(24) 
             on_release: app.enviar_mensaje()
