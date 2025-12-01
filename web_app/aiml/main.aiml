@@ -1,0 +1,51 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>HOLA</pattern>
+        <template>¡Hola! Soy TurisBot CDMX. ¿En qué te puedo ayudar?</template>
+    </category>
+
+    <category>
+        <pattern>HOLA *</pattern>
+        <template>¡Hola! ¿Quieres recomendaciones de sitios, transporte o seguridad?</template>
+    </category>
+
+    <category>
+        <pattern>HI</pattern>
+        <template>Hello! I'm TurisBot CDMX. How can I help you?</template>
+    </category>
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template>Hello! I can help with places, transport and safety information in Mexico City.</template>
+    </category>
+
+    <category>
+        <pattern>WIE GEHT'S</pattern>
+        <template>Hallo! Ich kann Ihnen bei Informationen zu touristischen Orten und Verkehr helfen.</template>
+    </category>
+
+    <category>
+        <pattern>SALUT</pattern>
+        <template>Bonjour ! Je peux vous aider avec des lieux touristiques, le transport et la sécurité.</template>
+    </category>
+
+    <category>
+        <pattern>GRACIAS</pattern>
+        <template>¡De nada! Si necesitas algo más dime.</template>
+    </category>
+
+    <category>
+        <pattern>THANKS</pattern>
+        <template>You're welcome! If you need anything else, tell me.</template>
+    </category>
+
+    <category>
+        <pattern>BYE</pattern>
+        <template>Goodbye! Enjoy your visit to Mexico City.</template>
+    </category>
+
+    <category>
+        <pattern>ADIOS</pattern>
+        <template>¡Adiós! Que disfrutes tu visita a la CDMX.</template>
+    </category>
+</aiml>

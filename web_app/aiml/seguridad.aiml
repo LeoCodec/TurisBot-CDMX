@@ -1,0 +1,21 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>SEGURIDAD</pattern>
+        <template>Para tu seguridad: evita viajar solo en horas muy nocturnas, utiliza transporte oficial, mantén tus pertenencias a la vista y evita exponer objetos de valor en la vía pública.</template>
+    </category>
+
+    <category>
+        <pattern>ALCALDIAS CON MAYOR PERCEPCION</pattern>
+        <template>Algunas alcaldías con mayor percepción de inseguridad son: Iztapalapa, Gustavo A. Madero, Tláhuac, Xochimilco y Tlalpan. Mantén precauciones adicionales en zonas con alta afluencia.</template>
+    </category>
+
+    <category>
+        <pattern>RECOMENDACIONES</pattern>
+        <template>Consejos prácticos: usa taxis de sitio o apps de transporte, evita mostrar mucho efectivo, consulta rutas alternativas y pregunta en tu hotel por zonas recomendadas.</template>
+    </category>
+
+    <category>
+        <pattern>ESTACION SEGURA *</pattern>
+        <template>Para la estación <star/>, se recomienda: usar entradas principales, evitar vagones vacíos en horas pico y seguir las indicaciones del personal. Si necesitas, pregunta por salidas y correspondencias.</template>
+    </category>
+</aiml>

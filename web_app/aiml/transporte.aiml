@@ -1,0 +1,44 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <!-- Tarifas generales -->
+    <category>
+        <pattern>PRECIO METRO</pattern>
+        <template>El precio del Metro de la CDMX es de $5 MXN por viaje (valor referencial).</template>
+    </category>
+
+    <category>
+        <pattern>PRECIO METROBUS</pattern>
+        <template>El Metrobús tiene distintas tarifas según estación y transferencias; en general ronda entre $6 y $10 MXN (valor referencial).</template>
+    </category>
+
+    <category>
+        <pattern>PRECIO ECOBICI</pattern>
+        <template>Ecobici ofrece planes por tiempo o membresía. Consulta la app oficial para disponibilidad actual. Hay pases desde tarifas simbólicas o membresías mensuales.</template>
+    </category>
+
+    <category>
+        <pattern>TARJETA MOVILIDAD</pattern>
+        <template>La tarjeta de movilidad (tarjeta de transporte) se compra en centros de servicio y estaciones; el plástico sin saldo puede costar alrededor de $20 MXN. El saldo se carga aparte.</template>
+    </category>
+
+    <!-- Líneas de metro - ejemplo: Línea 1 y Línea A/B -->
+    <category>
+        <pattern>LINEA 1</pattern>
+        <template>La Línea 1 (Observatorio - Pantitlán) es la línea rosa y atraviesa estaciones como Chapultepec y Pino Suárez.</template>
+    </category>
+
+    <category>
+        <pattern>LINEA A</pattern>
+        <template>La Línea A (Pantitlán - La Paz) es una línea que conecta zona oriente. (Ejemplo informativo.)</template>
+    </category>
+
+    <category>
+        <pattern>LINEA B</pattern>
+        <template>La Línea B (Buenavista - Ciudad Azteca) conecta el noroeste con el oriente del Valle de México.</template>
+    </category>
+
+    <!-- Ejemplo: cómo preguntar por una estación -->
+    <category>
+        <pattern>ESTACION *</pattern>
+        <template>¿Quieres saber horarios, correspondencias o recomendaciones para la estación <star/>? Indícalo.</template>
+    </category>
+</aiml>

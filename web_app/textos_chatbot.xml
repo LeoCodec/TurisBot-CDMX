@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chatbot>
+    <!-- Español -->
+    <language code="es">
+        <text key="titulo">TurisBot CDMX</text>
+        <text key="bienvenida">Bienvenido a TurisBot CDMX.</text>
+        <text key="instrucciones">Escribe tu mensaje y elige el idioma de respuesta.</text>
+        <text key="placeholder">Escribe tu mensaje aquí...</text>
+        <text key="enviar">Enviar</text>
+        <text key="elige_idioma">Elige idioma:</text>
+        <text key="respuesta_demo">Aquí aparecerá la respuesta del chatbot.</text>
+        <text key="fallback">No tengo información sobre eso. Intenta de otra forma.</text>
+    </language>
+
+    <!-- English -->
+    <language code="en">
+        <text key="titulo">TurisBot CDMX</text>
+        <text key="bienvenida">Welcome to TurisBot CDMX.</text>
+        <text key="instrucciones">Type your message and choose the reply language.</text>
+        <text key="placeholder">Type your message here...</text>
+        <text key="enviar">Send</text>
+        <text key="elige_idioma">Choose language:</text>
+        <text key="respuesta_demo">The chatbot response will appear here.</text>
+        <text key="fallback">I don't have information about that. Try another question.</text>
+    </language>
+
+    <!-- Deutsch -->
+    <language code="de">
+        <text key="titulo">TurisBot CDMX</text>
+        <text key="bienvenida">Willkommen bei TurisBot CDMX.</text>
+        <text key="instrucciones">Geben Sie Ihre Nachricht ein und wählen Sie die Sprache.</text>
+        <text key="placeholder">Geben Sie hier Ihre Nachricht ein...</text>
+        <text key="enviar">Senden</text>
+        <text key="elige_idioma">Sprache wählen:</text>
+        <text key="respuesta_demo">Die Antwort des Chatbots erscheint hier.</text>
+        <text key="fallback">Dazu habe ich keine Informationen. Versuche eine andere Frage.</text>
+    </language>
+
+    <!-- Français -->
+    <language code="fr">
+        <text key="titulo">TurisBot CDMX</text>
+        <text key="bienvenida">Bienvenue sur TurisBot CDMX.</text>
+        <text key="instrucciones">Écrivez votre message et choisissez la langue.</text>
+        <text key="placeholder">Écrivez votre message ici...</text>
+        <text key="enviar">Envoyer</text>
+        <text key="elige_idioma">Choisir la langue :</text>
+        <text key="respuesta_demo">La réponse du chatbot apparaîtra ici.</text>
+        <text key="fallback">Je n'ai pas d'information à ce sujet. Essayez une autre question.</text>
+    </language>
+</chatbot>

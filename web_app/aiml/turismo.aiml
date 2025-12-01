@@ -1,0 +1,31 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>QUE VISITAR</pattern>
+        <template>Te recomiendo: Zócalo, Palacio de Bellas Artes, Museo Nacional de Antropología, Castillo de Chapultepec, Xochimilco y Coyoacán.</template>
+    </category>
+
+    <category>
+        <pattern>MUSEOS</pattern>
+        <template>Algunos museos destacados: Museo Nacional de Antropología, Museo Soumaya, Museo Frida Kahlo (Casa Azul), Museo Diego Rivera Anahuacalli, Museo Tamayo.</template>
+    </category>
+
+    <category>
+        <pattern>FRIDA KAHLO</pattern>
+        <template>La Casa Azul (Museo Frida Kahlo) está en Coyoacán. Revisa horarios y compra boletos con antelación.</template>
+    </category>
+
+    <category>
+        <pattern>MUSEO TROTSKY</pattern>
+        <template>El Museo Casa de León Trotsky es un museo más pequeño e interesante para quienes buscan historia y patrimonio.</template>
+    </category>
+
+    <category>
+        <pattern>PLAZA CARSO</pattern>
+        <template>Plaza Carso está cerca del Museo Soumaya y es una zona de tiendas y restaurantes moderna.</template>
+    </category>
+
+    <category>
+        <pattern>DONDE COMER TACOS</pattern>
+        <template>En la CDMX hay muchas opciones; si buscas tacos al pastor, prueba en la zona del Centro Histórico o en la colonia Condesa.</template>
+    </category>
+</aiml>
