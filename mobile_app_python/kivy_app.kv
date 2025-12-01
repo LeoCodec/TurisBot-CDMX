@@ -1,9 +1,60 @@
-#:import dp kivy.metrics.dp
+#:import Hex kivy.utils.get_color_from_hex
+#:import Factory kivy.factory.Factory
 
+# =============================================================================
+# 1. PLANTILLA DE BANDERAS (GIGANTES PARA MÓVIL)
+# =============================================================================
+<LenguajeOption@SpinnerOption>:
+    background_normal: ''
+    background_color: app.colores["container"]
+    color: 0, 0, 0, 0             
+    size_hint_y: None             
+    height: dp(60)                
+
+    Image:
+        source: app.banderas.get(root.text.lower(), '')
+        center_x: root.center_x
+        center_y: root.center_y
+        size_hint: None, None     
+        size: dp(50), dp(35)      
+        allow_stretch: True
+        keep_ratio: True
+
+# =============================================================================
+# 2. Estilos de Burbujas
+# =============================================================================
+<BurbujaUsuario@Label>:
+    size_hint_y: None
+    height: self.texture_size[1] + dp(20)
+    text_size: self.width - dp(30), None
+    halign: 'right'
+    bold: True
+    canvas.before:
+        Color:
+            rgba: app.colores["container"]
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10, 10, 0, 10]
+
+<BurbujaBot@Label>:
+    size_hint_y: None
+    height: self.texture_size[1] + dp(20)
+    text_size: self.width - dp(30), None
+    halign: 'left'
+    canvas.before:
+        Color:
+            rgba: app.colores["container"]
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10, 10, 10, 0]
+
+# =============================================================================
+# 3. Pantalla Principal
+# =============================================================================
 BoxLayout:
     orientation: "vertical"
-    padding: dp(10)
-    spacing: dp(10)
     canvas.before:
         Color:
             rgba: app.colores["bg"]
@@ -11,44 +62,120 @@ BoxLayout:
             pos: self.pos
             size: self.size
 
-    Button:
-        text: "Tema"
-        size_hint_y: None
-        height: dp(45)
-        background_color: app.colores["button_bg"]
-        color: app.colores["button_text"]
-        on_release: app.cambiar_tema()
-
-    ScrollView:
-        size_hint_y: 1
-        do_scroll_x: False
-        do_scroll_y: True
-
-        Label:
-            id: chat_label
-            text: app.chat_history
-            color: app.colores["text"]
-            markup: True
-            text_size: self.width, None
-            size_hint_y: None
-            height: self.texture_size[1]
-
+    # HEADER SUPERIOR
     BoxLayout:
         size_hint_y: None
-        height: dp(55)
+        height: dp(70)
+        padding: dp(10)
+        spacing: dp(5)
+        
+        # TÍTULO
+        Label:
+            text: "TurisBot CDMX"
+            font_size: dp(20)
+            bold: True
+            color: app.colores["text"]
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+
+        # SELECTOR DE BANDERA
+        RelativeLayout:
+            size_hint_x: None
+            width: dp(60) 
+
+            # Imagen Visual (Bandera actual)
+            Image:
+                source: app.flag_src
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                size_hint: (None, None)
+                size: (dp(50), dp(35))
+                allow_stretch: True
+                keep_ratio: True
+
+            # Lista Desplegable (Spinner)
+            Spinner:
+                id: lang_spinner
+                text: "ES"
+                values: ["ES", "EN", "DE", "FR"]
+                option_cls: Factory.LenguajeOption
+                background_normal: ''
+                background_color: (0,0,0,0)
+                color: (0,0,0,0)
+                size_hint: (1, 1)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_text: app.cambiar_idioma(self.text)
+
+        # --- AQUÍ ESTÁ EL CAMBIO DEL BOTÓN TEMA ---
+        # Botón Transparente con Imagen (Sol/Luna)
+        Button:
+            size_hint_x: None
+            width: dp(50)
+            background_normal: '' 
+            background_color: (0,0,0,0) # Fondo invisible
+            on_release: app.cambiar_tema()
+
+            Image:
+                # LOGICA: Si es Dark, muestra SOL (para cambiar a luz). Si es Light, muestra LUNA.
+                source: "assets/sun.png" if app.tema_actual == 'dark' else "assets/moon.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(28), dp(28) # Tamaño del ícono
+                allow_stretch: True
+        # ------------------------------------------
+
+    # AREA DE CHAT
+    ScrollView:
+        id: scroller
+        do_scroll_x: False
+        
+        BoxLayout:
+            id: chat_history
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(10)
+            spacing: dp(15)
+
+    # INPUT AREA
+    BoxLayout:
+        size_hint_y: None
+        height: dp(80) 
+        padding: dp(10)
         spacing: dp(10)
+        canvas.before:
+            Color:
+                rgba: app.colores["container"]
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
         TextInput:
             id: input_box
-            hint_text: "Escribe tu mensaje..."
-            background_color: app.colores["input_bg"]
-            foreground_color: app.colores["text"]
-            cursor_color: app.colores["text"]
+            hint_text: app.hint_text_actual
             multiline: False
+            background_color: (0,0,0,0)
+            foreground_color: app.colores["text"]
+            cursor_color: app.colores["cursor"]
+            font_size: dp(18) 
+            hint_text_color: [0.5, 0.5, 0.5, 1]
+            padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            on_text_validate: app.enviar_mensaje()
+            
+            canvas.after:
+                Color:
+                    rgba: app.colores["cursor"] if self.focus else [0.5,0.5,0.5,1]
+                Line:
+                    points: [self.x, self.y + dp(5), self.x + self.width, self.y + dp(5)]
+                    width: 1.2
 
         Button:
-            text: "Enviar"
-            size_hint_x: 0.35
-            background_color: app.colores["button_bg"]
-            color: app.colores["button_text"]
-            on_release: app.enviar_mensaje(input_box.text)
+            text: ">"
+            size_hint_x: None
+            width: dp(60) 
+            background_normal: ''
+            background_color: app.colores["btn_bg"]
+            color: app.colores["btn_text"]
+            bold: True
+            font_size: dp(28) 
+            on_release: app.enviar_mensaje()
