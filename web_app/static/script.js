@@ -56,4 +56,19 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("keydown", function (e) {
         if (e.key === "Enter") sendMessage();
     });
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark-mode") ? "dark" : "light"
+    );
+});
+
+// Guardar preferencia del usuario
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+}
+
 });

@@ -2,11 +2,16 @@
 <html lang="{{ idioma }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ textos.titulo }}</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
+    <!-- Botón para cambiar tema -->
+    <button id="theme-toggle" class="theme-btn">🌗 Tema</button>
+
     <div class="container">
         <h1>{{ textos.titulo }}</h1>
         <p class="lead">{{ textos.bienvenida }}</p>
@@ -14,17 +19,19 @@
         <div class="controls">
             <label>{{ textos.elige_idioma }}</label>
             <select id="lang-select">
-                <option value="es" {% if idioma == 'es' %}selected{% endif %}>Español</option>
-                <option value="en" {% if idioma == 'en' %}selected{% endif %}>English</option>
-                <option value="de" {% if idioma == 'de' %}selected{% endif %}>Deutsch</option>
-                <option value="fr" {% if idioma == 'fr' %}selected{% endif %}>Français</option>
+                <option value="es" {% if idioma == 'es' %}selected{% endif %}>🇲🇽 Español</option>
+                <option value="en" {% if idioma == 'en' %}selected{% endif %}>🇺🇸 English</option>
+                <option value="de" {% if idioma == 'de' %}selected{% endif %}>🇩🇪 Deutsch</option>
+                <option value="fr" {% if idioma == 'fr' %}selected{% endif %}>🇫🇷 Français</option>
             </select>
         </div>
 
+        <!-- CAJA DEL CHAT -->
         <div id="chat-box" class="chat-box">
             <div class="notice">{{ textos.respuesta_demo }}</div>
         </div>
 
+        <!-- INPUT PARA MENSAJES -->
         <div class="input-area">
             <input id="user-input" type="text" placeholder="{{ textos.placeholder }}">
             <button id="send-btn">{{ textos.enviar }}</button>
@@ -34,6 +41,7 @@
     <script>
         const inicialLang = "{{ idioma }}";
     </script>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
