@@ -119,3 +119,80 @@ h1 { margin: 0 0 6px 0; }
     margin-bottom: 8px;
     font-style: italic;
 }
+
+/* ... (TUS ESTILOS DE COLORES Y BODY SIGUEN IGUAL) ... */
+
+/* =========================================
+   SELECTOR DE BANDERAS (MINIMALISTA)
+   ========================================= */
+.custom-select {
+    position: relative;
+    width: 80px; /* Mucho más angosto, solo para la bandera */
+    font-family: Arial, sans-serif;
+    user-select: none;
+}
+
+.selected-lang {
+    background: var(--container);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px; /* Padding uniforme */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Separa bandera y flecha */
+    transition: 0.2s;
+}
+
+.selected-lang:hover {
+    border-color: var(--user);
+}
+
+.selected-lang img, .option img {
+    width: 28px; /* Un poco más grandes para que luzcan */
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    display: block; /* Evita espacios extra */
+}
+
+/* Quitamos el margen derecho porque ya no hay texto */
+.selected-lang img { margin-right: 0; }
+.option img { margin-right: 0; }
+
+.arrow {
+    font-size: 10px;
+    color: var(--lead);
+    margin-left: 6px;
+}
+
+/* Menú desplegable */
+.options {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%; /* Del mismo ancho que el botón */
+    background: var(--container);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /* Centramos la bandera en la lista */
+    transition: background 0.2s;
+}
+
+.option:hover {
+    background: var(--bg);
+}
+
+.options.show {
+    display: block;
+}

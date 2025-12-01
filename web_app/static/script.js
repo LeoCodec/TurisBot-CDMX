@@ -1,19 +1,51 @@
-// script.js - Maneja envíos y recepción del bot
 document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("user-input");
     const sendBtn = document.getElementById("send-btn");
     const chatBox = document.getElementById("chat-box");
-    const langSelect = document.getElementById("lang-select");
-    // inicialLang viene de index.html inyectado por Flask
+    
     let lang = typeof inicialLang !== "undefined" ? inicialLang : "es";
 
-    langSelect.addEventListener("change", function () {
-        lang = this.value;
-        // recargar la página con parámetro lang para actualizar textos
-        const url = new URL(window.location.href);
-        url.searchParams.set("lang", lang);
-        window.location = url.toString();
-    });
+    // ============================================
+    // LÓGICA DEL SELECTOR (SOLO BANDERAS)
+    // ============================================
+    const customSelect = document.getElementById("custom-lang-select");
+    
+    if (customSelect) {
+        const selectedDisplay = customSelect.querySelector(".selected-lang");
+        const optionsContainer = customSelect.querySelector(".options");
+        const options = customSelect.querySelectorAll(".option");
+
+        // Abrir / Cerrar menú
+        selectedDisplay.addEventListener("click", (e) => {
+            e.stopPropagation();
+            optionsContainer.classList.toggle("show");
+        });
+
+        // Cerrar si clic fuera
+        document.addEventListener("click", (e) => {
+            if (!customSelect.contains(e.target)) {
+                optionsContainer.classList.remove("show");
+            }
+        });
+
+        // Al elegir bandera
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                const newLang = option.getAttribute("data-lang");
+                
+                if (newLang !== lang) {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set("lang", newLang);
+                    window.location = url.toString();
+                }
+                optionsContainer.classList.remove("show");
+            });
+        });
+    }
+
+    // ============================================
+    // FUNCIONES DEL CHAT (SIN CAMBIOS)
+    // ============================================
 
     function appendMessage(who, text) {
         const wrapper = document.createElement("div");
@@ -29,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!msg) return;
         appendMessage('user', msg);
         input.value = "";
-        // petición al backend
+
         const form = new URLSearchParams();
         form.append("msg", msg);
         form.append("lang", lang);
@@ -57,18 +89,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.key === "Enter") sendMessage();
     });
 
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        });
+    }
 
-    localStorage.setItem(
-        "theme",
-        document.body.classList.contains("dark-mode") ? "dark" : "light"
-    );
-});
-
-// Guardar preferencia del usuario
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-}
-
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
 });
