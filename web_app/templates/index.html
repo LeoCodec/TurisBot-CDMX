@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- Botón para cambiar tema -->
     <button id="theme-toggle" class="theme-btn">🌗 Tema</button>
 
     <div class="container">
@@ -17,8 +18,8 @@
         <div class="controls">
             <label>{{ textos.elige_idioma }}</label>
             
+            <!-- SELECTOR DE BANDERAS -->
             <div class="custom-select" id="custom-lang-select">
-                
                 <div class="selected-lang">
                     {% if idioma == 'es' %}
                         <img id="selected-flag" src="https://flagcdn.com/w40/mx.png" alt="ES">
@@ -48,18 +49,28 @@
                         <img src="https://flagcdn.com/w40/fr.png" alt="FR">
                     </div>
                 </div>
-
             </div>
-            </div>
+        </div>
 
+        <!-- CAJA DEL CHAT -->
         <div id="chat-box" class="chat-box">
             <div class="notice">{{ textos.respuesta_demo }}</div>
         </div>
 
+        <!-- INPUT PARA MENSAJES -->
         <div class="input-area">
             <input id="user-input" type="text" placeholder="{{ textos.placeholder }}">
             <button id="send-btn">{{ textos.enviar }}</button>
         </div>
+
+        <!-- ZONA DE DESCARGA (NUEVO) -->
+        <div class="download-area">
+            <p class="download-label">¡Prueba la App Beta en tu Android!</p>
+            <a href="{{ url_for('static', filename='TurisBot-CDMX-v0.1.apk') }}" class="download-btn" download>
+                ⬇️ Descargar TurisBot Beta v0.1
+            </a>
+        </div>
+
     </div>
 
     <script>

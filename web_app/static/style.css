@@ -196,3 +196,36 @@ h1 { margin: 0 0 6px 0; }
 .options.show {
     display: block;
 }
+
+/* =========================================
+   NUEVO: ÁREA DE DESCARGA
+   ========================================= */
+.download-area {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+    text-align: center;
+}
+
+.download-label {
+    font-size: 0.9em;
+    color: var(--lead);
+    margin-bottom: 10px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--bot);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.download-btn:hover {
+    background-color: var(--download-hover);
+    transform: translateY(-3px);
+}
