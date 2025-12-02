@@ -8,10 +8,10 @@ class TurisBotApp(App):
     idioma_actual_code = StringProperty("es")
     hint_text_actual = StringProperty("Escribe tu mensaje...")
     
-    # NUEVO: Propiedad para la ruta de la imagen de la bandera
+    # Ruta inicial de la bandera (México por defecto)
     flag_src = StringProperty("assets/mx.png") 
 
-    # NUEVO: Tu "JSON" de configuración de banderas
+    # Mapeo: Código de idioma -> Ruta de imagen
     banderas = {
         "es": "assets/mx.png",
         "en": "assets/us.png",
@@ -19,11 +19,11 @@ class TurisBotApp(App):
         "fr": "assets/fr.png"
     }
     
-    # Propiedades para el Tema
+    # Configuración de Tema (Oscuro/Claro)
     tema_actual = StringProperty("dark")
     colores = DictProperty()
 
-    # 🎨 PALETA IDENTICA A TU WEB
+    # PALETAS DE COLORES
     colores_oscuros = {
         "bg": (0.07, 0.07, 0.07, 1),
         "container": (0.12, 0.12, 0.12, 1),
@@ -61,15 +61,14 @@ class TurisBotApp(App):
             self.colores = self.colores_oscuros
 
     def cambiar_idioma(self, seleccion):
-        # 1. Obtener código limpio (ej: "es")
+        # Convertir la selección del spinner (ej: "ES") a minúscula ("es")
         code = seleccion.lower()
         self.idioma_actual_code = code
         
-        # 2. NUEVO: Actualizar la imagen buscando en el diccionario
-        # Si no encuentra la imagen, usa mx.png por defecto
+        # Actualizar la imagen de la bandera en el header
         self.flag_src = self.banderas.get(code, "assets/mx.png")
 
-        # 3. Actualizar placeholder
+        # Cambiar el texto de ayuda (placeholder) según el idioma
         placeholders = {
             "es": "Escribe tu mensaje...",
             "en": "Type your message...",
@@ -83,11 +82,15 @@ class TurisBotApp(App):
         msg = input_widget.text.strip()
         if not msg: return
 
+        # Mostrar mensaje del usuario inmediatamente
         self.agregar_burbuja(msg, es_usuario=True)
         input_widget.text = ""
+        
+        # Enviar al servidor en segundo plano
         Clock.schedule_once(lambda dt: self._procesar_envio(msg))
 
     def _procesar_envio(self, msg):
+        # Aquí es donde se manda el idioma al servidor ('es', 'en', etc.)
         respuesta = send_message(msg, self.idioma_actual_code)
         self.agregar_burbuja(respuesta, es_usuario=False)
 

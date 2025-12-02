@@ -63,12 +63,14 @@
             <button id="send-btn">{{ textos.enviar }}</button>
         </div>
 
-        <!-- ZONA DE DESCARGA (NUEVO) -->
+        <!-- ZONA DE DESCARGA  -->
         <div class="download-area">
-            <p class="download-label">¡Prueba la App Beta en tu Android!</p>
+            <p class="download-text">📱 ¿Quieres llevar a TurisBot contigo?</p>
+            <!-- El 'href' busca el archivo en la carpeta 'static' -->
             <a href="{{ url_for('static', filename='TurisBot-CDMX-v0.1.apk') }}" class="download-btn" download>
-                ⬇️ Descargar TurisBot Beta v0.1
+                Descargar TurisBot-CDMX App v0.1
             </a>
+            <p class="version-text">Versión Beta para Android</p>
         </div>
 
     </div>

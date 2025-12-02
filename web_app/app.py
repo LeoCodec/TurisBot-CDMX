@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, jsonify, session
 import os
 import xml.etree.ElementTree as ET
-import unicodedata  # <--- IMPORTANTE: Para quitar acentos
+import unicodedata  # <--- (1) IMPORTANTE: Librería para quitar acentos
 from chatbot_engine import ChatbotEngine
 
 # CONFIG GENERAL
@@ -33,18 +33,21 @@ TEXTOS = cargar_textos_desde_xml(XML_PATH)
 # INICIALIZAR MOTOR AIML
 engine = ChatbotEngine(AIML_DIR)
 
-# --- FUNCIÓN NUEVA: QUITAR ACENTOS ---
+# --- (2) FUNCIÓN NUEVA: LIMPIEZA DE TEXTO ---
 def normalizar_texto(texto):
     """
-    Convierte 'Línea' -> 'LINEA', 'Métro' -> 'METRO', 'Ahí' -> 'AHI'.
-    Esto es vital para que AIML reconozca los patrones sin problemas.
+    Elimina acentos y caracteres especiales para que AIML entienda.
+    Ejemplo: "¡Hola! ¿Qué línea es?" -> "HOLA QUE LINEA ES"
     """
     if not texto: return ""
-    # 1. Normalizar unicode (separar letras de tildes)
+    
+    # 1. Separar caracteres de sus tildes
     nfkd = unicodedata.normalize('NFKD', texto)
-    # 2. Filtrar caracteres no-ASCII (tildes) y unir
+    
+    # 2. Filtrar y quedarse solo con las letras base (sin la tilde)
     texto_sin_tildes = u"".join([c for c in nfkd if not unicodedata.combining(c)])
-    # 3. Convertir a mayúsculas
+    
+    # 3. Convertir a mayúsculas y quitar espacios extra
     return texto_sin_tildes.upper().strip()
 
 # CONTROL DE IDIOMA
@@ -62,7 +65,6 @@ def obtener_idioma():
 def index():
     idioma = obtener_idioma()
     textos = TEXTOS.get(idioma, TEXTOS["es"])
-    # Si es GET, solo renderiza
     return render_template("index.html", textos=textos, idioma=idioma, respuesta=textos.get("respuesta_demo"))
 
 # ENDPOINT PARA AJAX WEB
@@ -75,10 +77,10 @@ def api_chat_web():
 
     idioma = session.get("idioma", "es")
     
-    # USAMOS LA NUEVA FUNCIÓN AQUÍ
+    # (3) APLICAR LIMPIEZA AQUÍ
     user_msg_proc = normalizar_texto(user_msg)
     
-    # Truco para AIML
+    # Truco para AIML: Reiniciar contexto
     engine.kernel.setPredicate("topic", "") 
     
     bot_response = engine.get_response(user_msg_proc)
@@ -98,7 +100,7 @@ def api_chat_movil():
     if not mensaje.strip():
         return jsonify({"respuesta": "..."})
 
-    # USAMOS LA NUEVA FUNCIÓN AQUÍ TAMBIÉN
+    # (4) APLICAR LIMPIEZA TAMBIÉN AQUÍ (CRUCIAL PARA LA APP)
     mensaje_proc = normalizar_texto(mensaje)
     
     respuesta = engine.get_response(mensaje_proc)
