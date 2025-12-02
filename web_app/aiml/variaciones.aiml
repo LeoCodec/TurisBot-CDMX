@@ -1,8 +1,6 @@
 <aiml version="1.0.1" encoding="UTF-8">
 
-    <!-- =================================================================== -->
     <!--  VARIACIONES DE SALUDOS -->
-    <!-- =================================================================== -->
     
     <!-- Captura: "Hola!!!", "Holaaa", "Hola bot", "Hola amigo" -->
     <category>
@@ -28,9 +26,7 @@
     <category><pattern>QUE ONDA *</pattern><template><srai>QUE ONDA</srai></template></category>
     <category><pattern>QUIUBO *</pattern><template><srai>QUIUBO</srai></template></category>
 
-    <!-- =================================================================== -->
     <!--  VARIACIONES DE SEGURIDAD -->
-    <!-- =================================================================== -->
 
     <!-- Captura: "Quiero saber sobre seguridad", "Dime de seguridad" -->
     <category>
@@ -60,9 +56,7 @@
         <template><srai>ZONAS PELIGROSAS</srai></template>
     </category>
 
-    <!-- =================================================================== -->
     <!--  VARIACIONES DE TRANSPORTE -->
-    <!-- =================================================================== -->
 
     <!-- Captura: "Precio del metro", "Costo metro" -->
     <category>
@@ -97,9 +91,7 @@
     </category>
     <!-- (Repetir lógica para otras líneas si es necesario, o usar <set> en AIML 2.0, pero esto es AIML 1.0 compatible) -->
 
-    <!-- =================================================================== -->
     <!--  VARIACIONES DE TURISMO -->
-    <!-- =================================================================== -->
 
     <!-- Captura: "Qué puedo visitar", "Lugares para visitar" -->
     <category>
@@ -123,9 +115,7 @@
         <template><srai>TACOS</srai></template>
     </category>
 
-    <!-- =================================================================== -->
     <!--  VARIACIONES INGLÉS / ENGLISH -->
-    <!-- =================================================================== -->
 
     <category><pattern>HI *</pattern><template><srai>HI</srai></template></category>
     <category><pattern>* HI</pattern><template><srai>HI</srai></template></category>
