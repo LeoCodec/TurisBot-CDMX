@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, jsonify, session
 import os
 import xml.etree.ElementTree as ET
+import unicodedata  # <--- IMPORTANTE: Para quitar acentos
 from chatbot_engine import ChatbotEngine
 
 # CONFIG GENERAL
@@ -32,6 +33,20 @@ TEXTOS = cargar_textos_desde_xml(XML_PATH)
 # INICIALIZAR MOTOR AIML
 engine = ChatbotEngine(AIML_DIR)
 
+# --- FUNCIÓN NUEVA: QUITAR ACENTOS ---
+def normalizar_texto(texto):
+    """
+    Convierte 'Línea' -> 'LINEA', 'Métro' -> 'METRO', 'Ahí' -> 'AHI'.
+    Esto es vital para que AIML reconozca los patrones sin problemas.
+    """
+    if not texto: return ""
+    # 1. Normalizar unicode (separar letras de tildes)
+    nfkd = unicodedata.normalize('NFKD', texto)
+    # 2. Filtrar caracteres no-ASCII (tildes) y unir
+    texto_sin_tildes = u"".join([c for c in nfkd if not unicodedata.combining(c)])
+    # 3. Convertir a mayúsculas
+    return texto_sin_tildes.upper().strip()
+
 # CONTROL DE IDIOMA
 def obtener_idioma():
     lang = request.args.get("lang")
@@ -47,27 +62,23 @@ def obtener_idioma():
 def index():
     idioma = obtener_idioma()
     textos = TEXTOS.get(idioma, TEXTOS["es"])
-    mensaje = ""
-    respuesta = ""
-
-    if request.method == "POST":
-        # Manejo simple para formulario tradicional (si se usara)
-        pass
-
     # Si es GET, solo renderiza
     return render_template("index.html", textos=textos, idioma=idioma, respuesta=textos.get("respuesta_demo"))
 
 # ENDPOINT PARA AJAX WEB
 @app.route("/api/chat", methods=["POST"])
 def api_chat_web():
-    user_msg = request.form.get("msg", "").strip()
-    if not user_msg:
+    user_msg = request.form.get("msg", "")
+    
+    if not user_msg.strip():
         return "No recibí mensaje.", 400
 
     idioma = session.get("idioma", "es")
-    user_msg_proc = user_msg.upper()
     
-    # Truco para AIML: A veces necesita contexto
+    # USAMOS LA NUEVA FUNCIÓN AQUÍ
+    user_msg_proc = normalizar_texto(user_msg)
+    
+    # Truco para AIML
     engine.kernel.setPredicate("topic", "") 
     
     bot_response = engine.get_response(user_msg_proc)
@@ -77,21 +88,21 @@ def api_chat_web():
 
     return bot_response
 
-# --- ENDPOINT CORREGIDO PARA APP MÓVIL ---
+# ENDPOINT PARA APP MÓVIL
 @app.route("/chat", methods=["POST"])
 def api_chat_movil():
     data = request.get_json()
     mensaje = data.get("mensaje", "")
-    # LEER EL IDIOMA DEL JSON (IMPORTANTE)
     lang_recibido = data.get("lang", "es")
 
     if not mensaje.strip():
         return jsonify({"respuesta": "..."})
 
-    mensaje_proc = mensaje.upper()
+    # USAMOS LA NUEVA FUNCIÓN AQUÍ TAMBIÉN
+    mensaje_proc = normalizar_texto(mensaje)
+    
     respuesta = engine.get_response(mensaje_proc)
 
-    # Si AIML no responde, usar fallback del idioma correcto
     if not respuesta:
         textos_lang = TEXTOS.get(lang_recibido, TEXTOS["es"])
         respuesta = textos_lang.get("fallback", "No tengo información disponible.")

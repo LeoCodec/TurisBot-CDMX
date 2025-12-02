@@ -1,0 +1,139 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+    <!-- =================================================================== -->
+    <!--  VARIACIONES DE SALUDOS -->
+    <!-- =================================================================== -->
+    
+    <!-- Captura: "Hola!!!", "Holaaa", "Hola bot", "Hola amigo" -->
+    <category>
+        <pattern>HOLA *</pattern>
+        <template><srai>HOLA</srai></template>
+    </category>
+    
+    <!-- Captura: "Oye hola", "Hey hola" -->
+    <category>
+        <pattern>* HOLA</pattern>
+        <template><srai>HOLA</srai></template>
+    </category>
+
+    <!-- Captura: "Oye hola amigo" -->
+    <category>
+        <pattern>* HOLA *</pattern>
+        <template><srai>HOLA</srai></template>
+    </category>
+
+    <!-- Lo mismo para otros saludos -->
+    <category><pattern>BUENOS DIAS *</pattern><template><srai>HOLA</srai></template></category>
+    <category><pattern>* BUENOS DIAS</pattern><template><srai>HOLA</srai></template></category>
+    <category><pattern>QUE ONDA *</pattern><template><srai>QUE ONDA</srai></template></category>
+    <category><pattern>QUIUBO *</pattern><template><srai>QUIUBO</srai></template></category>
+
+    <!-- =================================================================== -->
+    <!--  VARIACIONES DE SEGURIDAD -->
+    <!-- =================================================================== -->
+
+    <!-- Captura: "Quiero saber sobre seguridad", "Dime de seguridad" -->
+    <category>
+        <pattern>* SEGURIDAD</pattern>
+        <template><srai>SEGURIDAD</srai></template>
+    </category>
+    
+    <category>
+        <pattern>SEGURIDAD *</pattern>
+        <template><srai>SEGURIDAD</srai></template>
+    </category>
+
+    <!-- Captura: "Ayuda por favor", "Ayudaaa" -->
+    <category>
+        <pattern>AYUDA *</pattern>
+        <template><srai>EMERGENCIA</srai></template>
+    </category>
+
+    <!-- Captura: "Me asaltaron", "Me robaron el celular" -->
+    <category>
+        <pattern>ME ROBARON *</pattern>
+        <template><srai>ME ROBARON</srai></template>
+    </category>
+
+    <category>
+        <pattern>ES SEGURO *</pattern>
+        <template><srai>ZONAS PELIGROSAS</srai></template>
+    </category>
+
+    <!-- =================================================================== -->
+    <!--  VARIACIONES DE TRANSPORTE -->
+    <!-- =================================================================== -->
+
+    <!-- Captura: "Precio del metro", "Costo metro" -->
+    <category>
+        <pattern>* METRO</pattern>
+        <template><srai>PRECIO METRO</srai></template>
+    </category>
+
+    <!-- Captura: "Metro precio", "Metro costo" -->
+    <category>
+        <pattern>METRO *</pattern>
+        <template><srai>PRECIO METRO</srai></template>
+    </category>
+
+    <category>
+        <pattern>* METROBUS</pattern>
+        <template><srai>PRECIO METROBUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>* ECOBICI</pattern>
+        <template><srai>PRECIO ECOBICI</srai></template>
+    </category>
+
+    <!-- Captura: "Línea 1 del metro", "Metro línea 1" -->
+    <category>
+        <pattern>* LINEA 1</pattern>
+        <template><srai>LINEA 1</srai></template>
+    </category>
+    <category>
+        <pattern>LINEA 1 *</pattern>
+        <template><srai>LINEA 1</srai></template>
+    </category>
+    <!-- (Repetir lógica para otras líneas si es necesario, o usar <set> en AIML 2.0, pero esto es AIML 1.0 compatible) -->
+
+    <!-- =================================================================== -->
+    <!--  VARIACIONES DE TURISMO -->
+    <!-- =================================================================== -->
+
+    <!-- Captura: "Qué puedo visitar", "Lugares para visitar" -->
+    <category>
+        <pattern>* VISITAR</pattern>
+        <template><srai>QUE VISITAR</srai></template>
+    </category>
+
+    <!-- Captura: "Museos en cdmx", "Museos gratis" -->
+    <category>
+        <pattern>MUSEOS *</pattern>
+        <template><srai>MUSEOS</srai></template>
+    </category>
+
+    <category>
+        <pattern>* TACOS</pattern>
+        <template><srai>TACOS</srai></template>
+    </category>
+
+    <category>
+        <pattern>TACOS *</pattern>
+        <template><srai>TACOS</srai></template>
+    </category>
+
+    <!-- =================================================================== -->
+    <!--  VARIACIONES INGLÉS / ENGLISH -->
+    <!-- =================================================================== -->
+
+    <category><pattern>HI *</pattern><template><srai>HI</srai></template></category>
+    <category><pattern>* HI</pattern><template><srai>HI</srai></template></category>
+    
+    <category><pattern>HELLO *</pattern><template><srai>HI</srai></template></category>
+    
+    <category><pattern>* SAFETY</pattern><template><srai>SAFETY</srai></template></category>
+    
+    <category><pattern>METRO *</pattern><template><srai>METRO PRICE</srai></template></category>
+
+</aiml>

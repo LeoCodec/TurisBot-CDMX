@@ -1,44 +1,366 @@
 <aiml version="1.0.1" encoding="UTF-8">
-    <!-- Tarifas generales -->
+
+    
+    <!--  ESPAÑOL: GUÍA EXPERTA DE TRANSPORTE -->
+
+    <!-- MENÚ GENERAL -->
     <category>
-        <pattern>PRECIO METRO</pattern>
-        <template>El precio del Metro de la CDMX es de $5 MXN por viaje (valor referencial).</template>
+        <pattern>LINEAS DE METRO</pattern>
+        <template>
+            La CDMX tiene 12 líneas numéricas y 2 férreas (A y B).
+             L1: Centro y Chapultepec.
+             L2: Zócalo y Sur.
+             L3: Universidad y Coyoacán.
+             L7: Polanco y Auditorio.
+             L9: Aeropuerto y Conciertos.
+            ¿De cuál quieres saber más? (Ej: "Linea 1", "Linea 12", "Linea B").
+        </template>
     </category>
 
-    <category>
-        <pattern>PRECIO METROBUS</pattern>
-        <template>El Metrobús tiene distintas tarifas según estación y transferencias; en general ronda entre $6 y $10 MXN (valor referencial).</template>
-    </category>
-
-    <category>
-        <pattern>PRECIO ECOBICI</pattern>
-        <template>Ecobici ofrece planes por tiempo o membresía. Consulta la app oficial para disponibilidad actual. Hay pases desde tarifas simbólicas o membresías mensuales.</template>
-    </category>
-
-    <category>
-        <pattern>TARJETA MOVILIDAD</pattern>
-        <template>La tarjeta de movilidad (tarjeta de transporte) se compra en centros de servicio y estaciones; el plástico sin saldo puede costar alrededor de $20 MXN. El saldo se carga aparte.</template>
-    </category>
-
-    <!-- Líneas de metro - ejemplo: Línea 1 y Línea A/B -->
+    <!-- DETALLE DE LÍNEAS (TUS DESCRIPCIONES EXACTAS) -->
     <category>
         <pattern>LINEA 1</pattern>
-        <template>La Línea 1 (Observatorio - Pantitlán) es la línea rosa y atraviesa estaciones como Chapultepec y Pino Suárez.</template>
+        <template>
+             **Línea 1 – Rosa (Observatorio ↔ Pantitlán)**
+            La más antigua y conocida. Cruza el Centro Histórico, Zona Rosa y Chapultepec.
+            Ideal para turistas por sus zonas culturales y museos.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 2</pattern>
+        <template>
+             **Línea 2 – Azul (Tasqueña ↔ Cuatro Caminos)**
+            Conecta el Sur con el Norte de la ciudad. Pasa por Zócalo, Bellas Artes y áreas comerciales.
+            Útil para visitar sitios históricos y culturales.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 3</pattern>
+        <template>
+             **Línea 3 – Verde Olivo (Indios Verdes ↔ Universidad)**
+            Conecta el Norte con el Sur, llega a Coyoacán y Ciudad Universitaria.
+            Pasa cerca de museos y la UNAM.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 4</pattern>
+        <template>
+             **Línea 4 – Cian (Martín Carrera ↔ Santa Anita)**
+            Línea corta, conecta zonas industriales y residenciales.
+            Ideal para turistas que necesiten cruzar hacia Santa Anita o mercados locales.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 5</pattern>
+        <template>
+             **Línea 5 – Amarilla (Pantitlán ↔ Politécnico)**
+            Conecta zona industrial y educativa. Pasa cerca de la Zona de Politécnico y mercados tradicionales.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 6</pattern>
+        <template>
+             **Línea 6 – Rojo (El Rosario ↔ Martín Carrera)**
+            Línea circular en el Norte-este. Cruza barrios tradicionales, útil para mercados y transporte local.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 7</pattern>
+        <template>
+             **Línea 7 – Naranja (El Rosario ↔ Barranca del Muerto)**
+            Llega a Polanco y Auditorio Nacional. Profunda y moderna, ideal para conciertos, exposiciones y zonas de lujo.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 8</pattern>
+        <template>
+             **Línea 8 – Verde Limón (Garibaldi ↔ Constitución de 1917)**
+            Conecta centro y zonas industriales. Cruza áreas culturales como Garibaldi (mariachi) y mercados locales.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINEA 9</pattern>
+        <template>
+             **Línea 9 – Café (Pantitlán ↔ Tacubaya)**
+            Conecta con el Aeropuerto Internacional y Foro Sol. Útil para turistas por conciertos y eventos deportivos.
+        </template>
     </category>
 
     <category>
         <pattern>LINEA A</pattern>
-        <template>La Línea A (Pantitlán - La Paz) es una línea que conecta zona oriente. (Ejemplo informativo.)</template>
+        <template>
+             **Línea A – Morada (Pantitlán ↔ La Paz)**
+            Línea sobre rieles elevados (no subterránea). Conecta zonas industriales y residenciales del oriente.
+        </template>
     </category>
 
     <category>
         <pattern>LINEA B</pattern>
-        <template>La Línea B (Buenavista - Ciudad Azteca) conecta el noroeste con el oriente del Valle de México.</template>
+        <template>
+             **Línea B – Verde con gris (Buenavista ↔ Ciudad Azteca)**
+            Línea elevada que cruza zona norte-oriente. Útil para llegar a mercados y áreas suburbanas, rápida y extensa.
+        </template>
     </category>
 
-    <!-- Ejemplo: cómo preguntar por una estación -->
     <category>
-        <pattern>ESTACION *</pattern>
-        <template>¿Quieres saber horarios, correspondencias o recomendaciones para la estación <star/>? Indícalo.</template>
+        <pattern>LINEA 12</pattern>
+        <template>
+             **Línea 12 – Dorada (Tláhuac ↔ Mixcoac)**
+            Línea larga y moderna, conecta sur-oriente con el suroeste. Pasa cerca de mercados tradicionales y zonas de interés cultural.
+        </template>
     </category>
+
+    <!-- OTROS DATOS DE TRANSPORTE (ESPAÑOL) -->
+    <category>
+        <pattern>PRECIO METRO</pattern>
+        <template>El precio es de $5 MXN por viaje.</template>
+    </category>
+    <category>
+        <pattern>TARJETA MOVILIDAD</pattern>
+        <template>Necesitas la Tarjeta de Movilidad ($15-$20 MXN). Recarga máxima: $500 MXN. Puedes pagar con tarjeta bancaria en torniquetes modernos.</template>
+    </category>
+    <category>
+        <pattern>ESTADIO AZTECA</pattern>
+        <template>Para el Estadio Azteca (Mundial 2026): Metro Línea 2 hasta Tasqueña + Tren Ligero hasta estación Estadio Azteca.</template>
+    </category>
+    <category>
+        <pattern>F1</pattern>
+        <template>Para la Fórmula 1: Metro Línea 9 (Café) a estación Ciudad Deportiva.</template>
+    </category>
+
+    <!--  ENGLISH/Ingles: METRO LINES GUIDE -->
+
+    <category><pattern>METRO LINES</pattern><template>CDMX has 12 lines plus lines A and B. Ask for "Line 1", "Line 7", etc.</template></category>
+
+    <category>
+        <pattern>LINE 1</pattern>
+        <template>
+             **Line 1 – Pink (Observatorio ↔ Pantitlán)**
+            The oldest and most known. Crosses Historic Center, Pink Zone, and Chapultepec.
+            Ideal for tourists due to cultural zones and museums.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 2</pattern>
+        <template>
+             **Line 2 – Blue (Tasqueña ↔ Cuatro Caminos)**
+            Connects South with North. Passes Zocalo, Bellas Artes, and commercial areas.
+            Useful for visiting historical and cultural sites.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 3</pattern>
+        <template>
+             **Line 3 – Olive Green (Indios Verdes ↔ Universidad)**
+            Connects North with South, reaches Coyoacan and University City.
+            Passes near museums and UNAM.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 4</pattern>
+        <template>
+             **Line 4 – Cyan (Martín Carrera ↔ Santa Anita)**
+            Short line, connects industrial and residential areas.
+            Ideal for tourists needing to cross to Santa Anita or local markets.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 5</pattern>
+        <template>
+             **Line 5 – Yellow (Pantitlán ↔ Politécnico)**
+            Connects industrial and educational zones. Passes near Polytechnic Zone and traditional markets.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 6</pattern>
+        <template>
+             **Line 6 – Red (El Rosario ↔ Martín Carrera)**
+            Circular line in the North-East. Crosses traditional neighborhoods, useful for markets and local transport.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 7</pattern>
+        <template>
+             **Line 7 – Orange (El Rosario ↔ Barranca del Muerto)**
+            Reaches Polanco and National Auditorium. Deep and modern, ideal for concerts, exhibitions, and luxury zones.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 8</pattern>
+        <template>
+             **Line 8 – Lime Green (Garibaldi ↔ Constitución de 1917)**
+            Connects center and industrial zones. Crosses cultural areas like Garibaldi (mariachi) and local markets.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 9</pattern>
+        <template>
+             **Line 9 – Brown (Pantitlán ↔ Tacubaya)**
+            Connects with International Airport and Foro Sol.
+            Useful for tourists for concerts and sporting events.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE 12</pattern>
+        <template>
+             **Line 12 – Gold (Tláhuac ↔ Mixcoac)**
+            Long and modern line, connects South-East with South-West.
+            Passes near traditional markets and cultural interest zones.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE A</pattern>
+        <template>
+             **Line A – Purple (Pantitlán ↔ La Paz)**
+            Elevated rail line (not underground). Connects industrial and residential zones of the East.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINE B</pattern>
+        <template>
+             **Line B – Green/Grey (Buenavista ↔ Ciudad Azteca)**
+            Elevated line crossing North-East. Useful to reach markets and suburban areas, fast and extensive.
+        </template>
+    </category>
+
+    <!--  DEUTSCH/Alemán: U-BAHN LINIEN -->
+    
+
+    <category><pattern>U-BAHN LINIEN</pattern><template>CDMX hat 12 Linien. Fragen Sie nach "Linie 1", "Linie 7" usw.</template></category>
+
+    <category>
+        <pattern>LINIE 1</pattern>
+        <template>
+             **Linie 1 – Rosa:** Älteste Linie. Durchquert das historische Zentrum, Zona Rosa und Chapultepec. Ideal für Touristen (Kultur/Museen).
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE 2</pattern>
+        <template>
+             **Linie 2 – Blau:** Verbindet Nord und Süd. Hält am Zocalo, Bellas Artes. Nützlich für historische Stätten.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE 3</pattern>
+        <template>
+             **Linie 3 – Oliv:** Verbindet Nord-Süd, Coyoacán und Universitätsstadt. In der Nähe von Museen und UNAM.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE 7</pattern>
+        <template>
+             **Linie 7 – Orange:** Polanco und Nationales Auditorium. Tief und modern. Ideal für Konzerte und Luxusgegenden.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE 9</pattern>
+        <template>
+             **Linie 9 – Braun:** Verbindet mit Flughafen und Foro Sol. Nützlich für Konzerte und Sportveranstaltungen.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE 12</pattern>
+        <template>
+             **Linie 12 – Gold:** Lang und modern. Verbindet Südost mit Südwest. Kulturelle Interessengebiete.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE A</pattern>
+        <template>
+             **Linie A – Lila:** Oberflächenlinie. Verbindet Industrie- und Wohngebiete im Osten.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LINIE B</pattern>
+        <template>
+             **Linie B – Grau/Grün:** Hochbahn im Nordosten. Nützlich für Märkte und Vororte.
+        </template>
+    </category>
+
+    <!--  FRANÇAIS/Frances: LIGNES DE MÉTRO -->
+
+    <category><pattern>LIGNES DE METRO</pattern><template>Mexico a 12 lignes. Demandez "Ligne 1", "Ligne 7", etc.</template></category>
+
+    <category>
+        <pattern>LIGNE 1</pattern>
+        <template>
+             **Ligne 1 – Rose :** La plus ancienne. Traverse le Centre Historique, Zona Rosa, Chapultepec. Idéal pour les touristes (culture/musées).
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE 2</pattern>
+        <template>
+             **Ligne 2 – Bleue :** Relie le Nord et le Sud. Passe par Zocalo, Bellas Artes. Utile pour les sites historiques.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE 3</pattern>
+        <template>
+             **Ligne 3 – Olive :** Relie le Nord au Sud, Coyoacán et Cité Universitaire. Proche des musées et de l'UNAM.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE 7</pattern>
+        <template>
+             **Ligne 7 – Orange :** Polanco et Auditorium National. Profonde et moderne. Idéale pour concerts et zones de luxe.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE 9</pattern>
+        <template>
+             **Ligne 9 – Marron :** Relie à l'aéroport et Foro Sol. Utile pour concerts et événements sportifs.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE 12</pattern>
+        <template>
+             **Ligne 12 – Or :** Longue et moderne. Relie Sud-Est et Sud-Ouest. Zones d'intérêt culturel.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE A</pattern>
+        <template>
+             **Ligne A – Violette :** Ligne de surface. Zones industrielles et résidentielles de l'Est.
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIGNE B</pattern>
+        <template>
+             **Ligne B – Vert/Gris :** Ligne aérienne traversant le Nord-Est. Utile pour les marchés et banlieues.
+        </template>
+    </category>
+
 </aiml>
