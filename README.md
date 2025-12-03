@@ -1,6 +1,6 @@
 # 🗺️ TurisBot-CDMX  
 Chatbot turístico para la Ciudad de México  
-**Web App (Flask) + App Móvil (Kivy)**
+**Web App (Flask)**
 
 ---
 
@@ -17,7 +17,6 @@ El proyecto incluye una **aplicación web** y una **aplicación móvil**, ambas 
 ![JavaScript](https://img.shields.io/badge/JavaScript-17.7%25-yellow)
 ![CSS](https://img.shields.io/badge/CSS-16.0%25-blueviolet)
 ![HTML](https://img.shields.io/badge/HTML-11.3%25-orange)
-![KVLang](https://img.shields.io/badge/KVLang-9.6%25-green)
 
 ## 🧩 Tecnologías
 
@@ -25,7 +24,7 @@ El proyecto incluye una **aplicación web** y una **aplicación móvil**, ambas 
 |-----------------|-------------|
 | **Backend & Lógica** | Python • Flask (API REST) • AIML |
 | **Web App**          | HTML • CSS • JavaScript |
-| **App Móvil**        | Kivy • KVLang |
+| **App Móvil**        | Proximamente... |
 
 
 ---
@@ -37,7 +36,7 @@ El proyecto incluye una **aplicación web** y una **aplicación móvil**, ambas 
 - Selector de idioma (ES, EN, DE, FR)  
 - Respuestas AIML personalizadas  
 - API compartida entre ambas plataformas  
-- Preparado para compilar APK Android con Buildozer  
+- Preparado para compilar APK Android con Flutter y Dart proximamente... 
 
 ---
 
@@ -47,14 +46,6 @@ El proyecto incluye una **aplicación web** y una **aplicación móvil**, ambas 
 cd web_app
 python app.py
 
-### App Móvil (Kivy)
-cd mobile_app_python
-python main.py
-
-### Generar APK (Android)
-sudo apt install buildozer
-buildozer init
-buildozer -v android debug
 
 ### 🔮 Planes a Futuro
 
