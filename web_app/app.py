@@ -1,10 +1,12 @@
-#  TurisBot CDMX - Servidor Flask (Web + App Móvil)
+#  TurisBot CDMX - Servidor Flask (Web)
 
 from flask import Flask, render_template, request, jsonify, session
 import os
 import xml.etree.ElementTree as ET
 import unicodedata  # <--- (1) IMPORTANTE: Librería para quitar acentos
 from chatbot_engine import ChatbotEngine
+import googletrans
+from deep_translator import GoogleTranslator
 
 # CONFIG GENERAL
 BASE_DIR = os.path.dirname(__file__)
@@ -71,45 +73,37 @@ def index():
 @app.route("/api/chat", methods=["POST"])
 def api_chat_web():
     user_msg = request.form.get("msg", "")
-    
-    if not user_msg.strip():
-        return "No recibí mensaje.", 400
-
     idioma = session.get("idioma", "es")
-    
-    # (3) APLICAR LIMPIEZA AQUÍ
-    user_msg_proc = normalizar_texto(user_msg)
-    
-    # Truco para AIML: Reiniciar contexto
-    engine.kernel.setPredicate("topic", "") 
-    
-    bot_response = engine.get_response(user_msg_proc)
 
-    if not bot_response:
-        bot_response = TEXTOS[idioma].get("respuesta_demo", "No tengo información sobre eso.")
+    # Normalizar
+    user_msg_proc = normalizar_texto(user_msg)
+
+    # Si no es español → traducir ANTES del AIML
+    if idioma != "es":
+        try:
+            traducido = GoogleTranslator(source=idioma, target="es").translate(user_msg)
+            user_msg_proc = normalizar_texto(traducido)
+        except:
+            pass
+
+    # Respuesta en español desde el AIML
+    bot_response_es = engine.get_response(user_msg_proc)
+
+    if not bot_response_es:
+        bot_response_es = TEXTOS["es"].get("respuesta_demo", "No tengo información sobre eso.")
+
+    # Si idioma ≠ español → traducimos la respuesta al idioma del usuario
+    if idioma != "es":
+        try:
+            bot_response = GoogleTranslator(source="es", target=idioma).translate(bot_response_es)
+        except:
+            bot_response = bot_response_es
+    else:
+        bot_response = bot_response_es
 
     return bot_response
 
-# ENDPOINT PARA APP MÓVIL
-@app.route("/chat", methods=["POST"])
-def api_chat_movil():
-    data = request.get_json()
-    mensaje = data.get("mensaje", "")
-    lang_recibido = data.get("lang", "es")
 
-    if not mensaje.strip():
-        return jsonify({"respuesta": "..."})
-
-    # (4) APLICAR LIMPIEZA TAMBIÉN AQUÍ (CRUCIAL PARA LA APP)
-    mensaje_proc = normalizar_texto(mensaje)
-    
-    respuesta = engine.get_response(mensaje_proc)
-
-    if not respuesta:
-        textos_lang = TEXTOS.get(lang_recibido, TEXTOS["es"])
-        respuesta = textos_lang.get("fallback", "No tengo información disponible.")
-
-    return jsonify({"respuesta": respuesta})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

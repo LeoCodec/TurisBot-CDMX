@@ -1,20 +1,20 @@
-<aiml version="1.0.1" encoding="UTF-8">
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1">
 
-    <!--  1. MASTER: CONSEJOS GENERALES DE SEGURIDAD -->
-    
+    <!-- 1. Maestro: Consejos de seguridad -->
     <category>
         <pattern>SEGURIDAD</pattern>
         <template>
             Consejos de seguridad para la CDMX:
             1. En zonas concurridas, lleva tu mochila al frente y cartera en bolsillos delanteros.
             2. Evita caminar solo por calles oscuras o solitarias de noche.
-            3. Usa transporte oficial o Apps certificadas (Uber, Didi). Evita taxis libres en la calle de noche.
-            4. No cuentes dinero en público ni uses cajeros automáticos (ATM) en calles solitarias.
-            5. En caso de emergencia real, marca al 911.
+            3. Usa transporte oficial o apps certificadas como Uber o Didi.
+            4. No cuentes dinero en publico ni uses cajeros en calles solitarias.
+            5. En caso de emergencia marca al 911.
         </template>
     </category>
 
-    <!-- VARIACIONES: Todo esto redirige a "SEGURIDAD" -->
+    <!-- Variaciones -->
     <category><pattern>CONSEJOS DE SEGURIDAD</pattern><template><srai>SEGURIDAD</srai></template></category>
     <category><pattern>ES SEGURO</pattern><template><srai>SEGURIDAD</srai></template></category>
     <category><pattern>ES SEGURA LA CIUDAD</pattern><template><srai>SEGURIDAD</srai></template></category>
@@ -25,41 +25,45 @@
     <category><pattern>CUIDADOS</pattern><template><srai>SEGURIDAD</srai></template></category>
     <category><pattern>PRECAUCIONES</pattern><template><srai>SEGURIDAD</srai></template></category>
 
-    <!--  2. EMERGENCIAS (POLICÍA, ROBO, 911) -->
-    
+    <!-- 2. Emergencias -->
     <category>
         <pattern>EMERGENCIA</pattern>
         <template>
-            ¡ATENCIÓN! 🚨
-            - Si estás en peligro inmediato, llama al **911**.
-            - Policía Turística CDMX: 55 5207 4155 (Atención bilingüe).
-            - Ángeles Verdes (Ayuda en carretera): 078.
-            - Cruz Roja (Ambulancia): 065 o 911.
-            Busca el botón de pánico más cercano en los postes del C5 (cámaras de la ciudad).
+            Atencion:
+            - Si estas en peligro inmediato, llama al 911.
+            - Policia Turistica CDMX: 55 5207 4155.
+            - Angeles Verdes: 078.
+            - Cruz Roja: 065 o 911.
+            Busca un boton de panico en los postes del C5.
         </template>
     </category>
 
-    <!-- Redirecciones de Emergencia -->
     <category><pattern>POLICIA</pattern><template><srai>EMERGENCIA</srai></template></category>
     <category><pattern>AYUDA</pattern><template><srai>EMERGENCIA</srai></template></category>
     <category><pattern>SOCORRO</pattern><template><srai>EMERGENCIA</srai></template></category>
     <category><pattern>AUXILIO</pattern><template><srai>EMERGENCIA</srai></template></category>
-    <category><pattern>ME ROBARON</pattern><template>Lo siento mucho. Llama al 911 o acércate a un policía. Para denunciar, debes ir al Ministerio Público Especializado en Atención al Turista.</template></category>
+
+    <category>
+        <pattern>ME ROBARON</pattern>
+        <template>
+            Lamento lo ocurrido. Llama al 911 o acude a un policia.
+            Para denunciar, debes ir al Ministerio Publico Especializado en Atencion al Turista.
+        </template>
+    </category>
+
     <category><pattern>ASALTO</pattern><template><srai>ME ROBARON</srai></template></category>
     <category><pattern>TELEFONO DE EMERGENCIA</pattern><template><srai>EMERGENCIA</srai></template></category>
 
-    <!--  3. ZONAS ESPECÍFICAS (BARRÍOS Y ALCALDÍAS) -->
-    
-    <!-- Zonas Generales a Evitar -->
+    <!-- 3. Zonas peligrosas -->
     <category>
         <pattern>ZONAS PELIGROSAS</pattern>
         <template>
-            Como turista, se recomienda precaución extrema o evitar:
-            - Tepito y La Lagunilla (especialmente de noche o sin guía).
-            - Doctores y Obrera (de noche).
-            - La Merced (muy concurrido, alto riesgo de carteristas).
-            - Algunas zonas de Iztapalapa y Gustavo A. Madero alejadas de sitios turísticos.
-            Mantente en corredores turísticos como Reforma, Centro (Madero), Roma, Condesa y Polanco.
+            Se recomienda evitar:
+            - Tepito y La Lagunilla.
+            - Doctores y Obrera en la noche.
+            - La Merced por riesgo de carteristas.
+            - Zonas alejadas de Iztapalapa y Gustavo A. Madero.
+            Preferir zonas turisticas: Reforma, Roma, Condesa, Polanco.
         </template>
     </category>
 
@@ -67,214 +71,224 @@
     <category><pattern>LUGARES PELIGROSOS</pattern><template><srai>ZONAS PELIGROSAS</srai></template></category>
     <category><pattern>QUE ZONAS EVITAR</pattern><template><srai>ZONAS PELIGROSAS</srai></template></category>
 
-    <!-- Preguntas específicas por barrio -->
+    <!-- Barrios específicos -->
     <category>
         <pattern>ES SEGURO TEPITO</pattern>
-        <template>Tepito es conocido como el "Barrio Bravo". No es recomendable para turistas ir solos. Si deseas ir, hazlo con un tour guiado especializado y de día.</template>
+        <template>Tepito no es recomendable para turistas. Solo con guia y de dia.</template>
     </category>
-    
+
     <category>
         <pattern>ES SEGURO IZTAPALAPA</pattern>
-        <template>Iztapalapa es muy grande. Tiene zonas turísticas seguras como el Cablebús o la Utopía Meyehualco, pero otras zonas son inseguras. Se recomienda ir de día y en transporte directo.</template>
+        <template>Iztapalapa tiene zonas seguras turisticas, pero otras que no lo son. Ir solo de dia.</template>
     </category>
 
     <category>
         <pattern>ES SEGURO EL CENTRO</pattern>
-        <template>El Centro Histórico es muy seguro de día y hay mucha policía turística. De noche, evita calles solitarias y mantente en calles peatonales como Madero o Regina.</template>
+        <template>El Centro Historico es seguro de dia. De noche evitar calles solitarias.</template>
     </category>
 
     <category>
         <pattern>ES SEGURO LA DOCTORES</pattern>
-        <template>La colonia Doctores puede ser insegura, especialmente de noche y cerca de la zona de autopartes. Ten precaución si transitas por ahí.</template>
+        <template>La colonia Doctores puede ser insegura, especialmente de noche.</template>
     </category>
 
     <category>
         <pattern>ES SEGURO XOCHIMILCO</pattern>
-        <template>La zona turística de las trajineras (Nativitas, Las Flores) es segura y familiar. Evita zonas alejadas de los embarcaderos oficiales y negocia precios antes de subir.</template>
+        <template>Las zonas turisticas como los embarcaderos oficiales son seguras. Evita zonas alejadas.</template>
     </category>
 
-    <!--  4. TRANSPORTE SEGURO (UBER, TAXI, METRO) -->
+    <!-- 4. Transporte -->
     <category>
         <pattern>TRANSPORTE SEGURO</pattern>
         <template>
-            Recomendaciones de transporte:
-            1. Apps (Uber/Didi): Son la opción más segura, revisa placas y foto del conductor.
-            2. Metro/Metrobús: Seguros y rápidos. Cuida tu celular y cartera en horas pico (7-9am y 6-8pm).
-            3. Taxi Libre (Calle): NO recomendado de noche. De día, verifica que tenga placas A o B y tarjetón visible.
-            4. Taxis de Sitio: Más seguros que los de calle.
+            Recomendaciones:
+            1. Uber o Didi son seguros.
+            2. Metro y Metrobus son seguros pero cuidar pertenencias.
+            3. Evitar taxis de calle en la noche.
+            4. Preferir taxis de sitio.
         </template>
     </category>
 
-    <category><pattern>ES SEGURO EL METRO</pattern><template>Sí, es seguro. Solo mantén tu mochila al frente para evitar carteristas cuando hay mucha gente.</template></category>
-    <category><pattern>ES SEGURO UBER</pattern><template>Sí, Uber y Didi son altamente recomendados para turistas en la CDMX.</template></category>
-    <category><pattern>TAXI</pattern><template>Si usas taxi, prefiere los de "Sitio" (base establecida) o Apps. Evita parar taxis en la calle de noche.</template></category>
+    <category><pattern>ES SEGURO EL METRO</pattern><template>Si, es seguro, solo cuida tu mochila al frente.</template></category>
+    <category><pattern>ES SEGURO UBER</pattern><template>Si, Uber y Didi son recomendados.</template></category>
+    <category><pattern>TAXI</pattern><template>Preferir taxis de sitio o apps. Evitar taxis de calle.</template></category>
 
-    
-    <!--  5. SEGURIDAD PARA MUJERES Y NIÑOS -->
-    
+    <!-- 5. Mujeres -->
     <category>
         <pattern>MUJERES</pattern>
         <template>
-            Para mujeres viajeras:
-            - En Metro y Metrobús, los primeros vagones son EXCLUSIVOS para mujeres y niños (menores de 12 años).
-            - Están señalizados con color rosa. ¡Úsalos, son más seguros!
-            - Existe la línea *765 (SOS Mujeres) para asistencia.</template>
+            Consejos para mujeres:
+            - Metro y Metrobus tienen vagones exclusivos.
+            - Estan marcados en color rosa.
+            - Existe la linea 765 (SOS Mujeres).
+        </template>
     </category>
 
     <category><pattern>VAGON ROSA</pattern><template><srai>MUJERES</srai></template></category>
     <category><pattern>SOY MUJER</pattern><template><srai>MUJERES</srai></template></category>
     <category><pattern>VIAJO SOLA</pattern><template><srai>MUJERES</srai></template></category>
-    <category><pattern>ACOSO</pattern><template>El acoso es delito. Si te sientes insegura en el transporte, acciona la palanca de emergencia o pide ayuda a un policía (chaleco amarillo o azul).</template></category>
 
-    
-    <!--  6. OTROS (DOCUMENTOS, CAJEROS) -->
-    
+    <category>
+        <pattern>ACOSO</pattern>
+        <template>El acoso es delito. Pide ayuda a un policia o usa la palanca de emergencia.</template>
+    </category>
+
+    <!-- 6. Documentos y cajeros -->
     <category>
         <pattern>PASAPORTE</pattern>
-        <template>Si perdiste tu pasaporte, acude inmediatamente a tu embajada o consulado. Ten siempre una copia digital o física en tu hotel.</template>
+        <template>Si perdiste tu pasaporte, acude a tu embajada o consulado.</template>
     </category>
-    
+
     <category>
         <pattern>CAJEROS</pattern>
-        <template>Usa cajeros automáticos (ATM) que estén DENTRO de plazas comerciales o supermercados. Evita los que están directos a la calle, especialmente de noche.</template>
+        <template>Usar cajeros dentro de plazas o supermercados. Evitar los de calle.</template>
     </category>
+
     <category><pattern>DINERO</pattern><template><srai>CAJEROS</srai></template></category>
 
-    
-    <!--  7. ENGLISH (SAFETY & EMERGENCIES) -->
-    
-    
-    <!-- General Safety Advice -->
+    <!-- Versión en Ingles -->
+
+    <!-- 1. Master: Security tips -->
     <category>
-        <pattern>SAFETY</pattern>
+        <pattern>SECURITY</pattern>
         <template>
             Safety tips for Mexico City:
-            1. Use apps like Uber or Didi. Avoid street taxis at night.
-            2. Don't walk alone in dark or lonely streets.
-            3. Keep your valuables (phone, wallet) hidden in crowded places.
-            4. Only use ATMs inside shopping malls or supermarkets.
-            5. In case of emergency, dial 911.
+            1. In crowded places, keep your backpack in front and your wallet in front pockets.
+            2. Avoid walking alone in dark or empty streets at night.
+            3. Use official transportation or certified apps like Uber or Didi.
+            4. Avoid counting money in public or using ATMs in isolated streets.
+            5. In case of emergency, call 911.
         </template>
     </category>
 
-    <!-- Synonyms redirecting to SAFETY -->
-    <category><pattern>IS IT SAFE</pattern><template><srai>SAFETY</srai></template></category>
-    <category><pattern>SAFETY TIPS</pattern><template><srai>SAFETY</srai></template></category>
-    <category><pattern>DANGEROUS</pattern><template><srai>SAFETY</srai></template></category>
-    <category><pattern>HELP</pattern><template><srai>SAFETY</srai></template></category>
+    <!-- Variations -->
+    <category><pattern>SAFETY TIPS</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>IS IT SAFE</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>IS THE CITY SAFE</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>HOW SAFE IS IT</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>DANGERS</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>HOW TO STAY SAFE</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>SECURITY ADVICE</pattern><template><srai>SECURITY</srai></template></category>
+    <category><pattern>PRECAUTIONS</pattern><template><srai>SECURITY</srai></template></category>
 
-    <!-- Dangerous Areas -->
+    <!-- 2. Emergencies -->
+    <category>
+        <pattern>EMERGENCY</pattern>
+        <template>
+            Attention:
+            - If you are in immediate danger, call 911.
+            - Tourist Police CDMX: +52 55 5207 4155.
+            - Green Angels (highway assistance): 078.
+            - Red Cross: 065 or 911.
+            Look for a panic button on C5 city posts.
+        </template>
+    </category>
+
+    <category><pattern>POLICE</pattern><template><srai>EMERGENCY</srai></template></category>
+    <category><pattern>HELP</pattern><template><srai>EMERGENCY</srai></template></category>
+    <category><pattern>ASSISTANCE</pattern><template><srai>EMERGENCY</srai></template></category>
+
+    <category>
+        <pattern>I WAS ROBBED</pattern>
+        <template>
+            I’m sorry this happened. Call 911 or find a police officer.
+            For a report, go to the Public Ministry Office Specialized in Attention for Tourists.
+        </template>
+    </category>
+
+    <category><pattern>ROBBERY</pattern><template><srai>I WAS ROBBED</srai></template></category>
+    <category><pattern>EMERGENCY NUMBER</pattern><template><srai>EMERGENCY</srai></template></category>
+
+    <!-- 3. Dangerous areas -->
     <category>
         <pattern>DANGEROUS AREAS</pattern>
         <template>
-            As a tourist, avoid areas like Tepito, La Lagunilla, Doctores, and Iztapalapa, especially at night.
-            Stick to tourist corridors like Roma, Condesa, Polanco, and Reforma, which are generally safe.
+            Recommended to avoid:
+            - Tepito and La Lagunilla.
+            - Doctores and Obrera at night.
+            - La Merced (pickpocket risk).
+            - Remote areas of Iztapalapa and Gustavo A. Madero.
+            Prefer tourist areas: Reforma, Roma, Condesa, Polanco.
         </template>
     </category>
-    <category><pattern>WHERE NOT TO GO</pattern><template><srai>DANGEROUS AREAS</srai></template></category>
-    <category><pattern>BAD NEIGHBORHOODS</pattern><template><srai>DANGEROUS AREAS</srai></template></category>
 
-    <!-- Specific Questions -->
+    <category><pattern>PLACES TO AVOID</pattern><template><srai>DANGEROUS AREAS</srai></template></category>
+    <category><pattern>RISKY AREAS</pattern><template><srai>DANGEROUS AREAS</srai></template></category>
+    <category><pattern>WHAT AREAS TO AVOID</pattern><template><srai>DANGEROUS AREAS</srai></template></category>
+
+    <!-- Specific neighborhoods -->
     <category>
-        <pattern>IS UBER SAFE</pattern>
-        <template>Yes, Uber and Didi are highly recommended for tourists. Always check the license plate before getting in.</template>
+        <pattern>IS TEPITO SAFE</pattern>
+        <template>Tepito is not recommended for tourists. Only with a guide and during daytime.</template>
     </category>
+
     <category>
-        <pattern>POLICE</pattern>
+        <pattern>IS IZTAPALAPA SAFE</pattern>
+        <template>Iztapalapa has safe tourist areas, but some zones are not. Visit only during the day.</template>
+    </category>
+
+    <category>
+        <pattern>IS DOWNTOWN SAFE</pattern>
+        <template>The Historic Center is safe during the day. Avoid isolated streets at night.</template>
+    </category>
+
+    <category>
+        <pattern>IS DOCTORES SAFE</pattern>
+        <template>Doctores can be unsafe, especially at night.</template>
+    </category>
+
+    <category>
+        <pattern>IS XOCHIMILCO SAFE</pattern>
+        <template>Tourist areas like the official docks are safe. Avoid remote zones.</template>
+    </category>
+
+    <!-- 4. Transportation -->
+    <category>
+        <pattern>SAFE TRANSPORTATION</pattern>
         <template>
-            Emergency: 911.
-            Tourist Police (Bilingual): 55 5207 4155.
-            If you need help, look for officers in blue uniforms.
+            Recommendations:
+            1. Uber or Didi are safe.
+            2. Metro and Metrobus are safe but keep your belongings close.
+            3. Avoid street taxis at night.
+            4. Prefer taxi stands.
         </template>
     </category>
-    <category>
-        <pattern>WOMEN SAFETY</pattern>
-        <template>The Metro and Metrobus have exclusive cars for women and children (usually the first ones, marked in pink). Use them!</template>
-    </category>
 
-    
-    <!--  8. DEUTSCH (SICHERHEIT & NOTFÄLLE) -->
+    <category><pattern>IS METRO SAFE</pattern><template>Yes, it is safe. Keep your backpack in front.</template></category>
+    <category><pattern>IS UBER SAFE</pattern><template>Yes, Uber and Didi are recommended.</template></category>
+    <category><pattern>TAXI</pattern><template>Prefer taxi stands or apps. Avoid street taxis.</template></category>
 
-    <!-- Allgemeine Sicherheitstipps -->
+    <!-- 5. Women -->
     <category>
-        <pattern>SICHERHEIT</pattern>
+        <pattern>WOMEN</pattern>
         <template>
-            Sicherheitstipps für Mexiko-Stadt:
-            1. Nutzen Sie Apps wie Uber oder Didi. Vermeiden Sie Straßentaxis nachts.
-            2. Gehen Sie nachts nicht allein durch dunkle Straßen.
-            3. Zeigen Sie keine Wertsachen (Handy, Kamera) öffentlich.
-            4. Nutzen Sie Geldautomaten (ATMs) nur in Einkaufszentren.
-            5. Notrufnummer: 911.
+            Safety advice for women:
+            - Metro and Metrobus have women-only cars.
+            - They are marked in pink.
+            - There is hotline 765 (SOS Women).
         </template>
     </category>
 
-    <!-- Umleitungen -->
-    <category><pattern>IST ES SICHER</pattern><template><srai>SICHERHEIT</srai></template></category>
-    <category><pattern>SICHERHEITSTIPPS</pattern><template><srai>SICHERHEIT</srai></template></category>
-    <category><pattern>GEFAHRLICH</pattern><template><srai>SICHERHEIT</srai></template></category>
-    <category><pattern>HILFE</pattern><template><srai>SICHERHEIT</srai></template></category>
+    <category><pattern>PINK CAR</pattern><template><srai>WOMEN</srai></template></category>
+    <category><pattern>I AM A WOMAN</pattern><template><srai>WOMEN</srai></template></category>
+    <category><pattern>I TRAVEL ALONE</pattern><template><srai>WOMEN</srai></template></category>
 
-    <!-- Gefährliche Gebiete -->
     <category>
-        <pattern>GEFAHRLICHE GEBIETE</pattern>
-        <template>
-            Vermeiden Sie als Tourist Gegenden wie Tepito, La Lagunilla und Iztapalapa, besonders nachts.
-            Bleiben Sie in sicheren Zonen wie Roma, Condesa, Polanco und Reforma.
-        </template>
-    </category>
-    <category><pattern>WO NICHT HINGEHEN</pattern><template><srai>GEFAHRLICHE GEBIETE</srai></template></category>
-
-    <!-- Spezifische Fragen -->
-    <category>
-        <pattern>IST UBER SICHER</pattern>
-        <template>Ja, Uber und Didi sind für Touristen sehr zu empfehlen. Überprüfen Sie immer das Kennzeichen.</template>
-    </category>
-    <category>
-        <pattern>POLIZEI</pattern><template>Notruf: 911. Touristenpolizei (Zweisprachig): 55 5207 4155.</template>
+        <pattern>HARASSMENT</pattern>
+        <template>Harassment is a crime. Ask a police officer for help or use the emergency lever.</template>
     </category>
 
-    <!--  9. FRANÇAIS (SÉCURITÉ & URGENCES) -->
-
-    <!-- Conseils de Sécurité -->
+    <!-- 6. Documents and ATMs -->
     <category>
-        <pattern>SECURITE</pattern>
-        <template>
-            Conseils de sécurité pour Mexico :
-            1. Utilisez Uber ou Didi. Évitez les taxis de rue la nuit.
-            2. Ne marchez pas seul dans des rues sombres.
-            3. Ne montrez pas d'objets de valeur (téléphone, appareil photo).
-            4. Utilisez les distributeurs automatiques (ATM) dans les centres commerciaux.
-            5. Urgence : 911.
-        </template>
+        <pattern>PASSPORT</pattern>
+        <template>If you lost your passport, go to your embassy or consulate.</template>
     </category>
 
-    <!-- Redirections -->
-    <category><pattern>SÉCURITÉ</pattern><template><srai>SECURITE</srai></template></category>
-    <category><pattern>EST-CE SUR</pattern><template><srai>SECURITE</srai></template></category>
-    <category><pattern>DANGEREUX</pattern><template><srai>SECURITE</srai></template></category>
-    <category><pattern>AIDE</pattern><template><srai>SECURITE</srai></template></category>
+    <category>
+        <pattern>ATM</pattern>
+        <template>Use ATMs inside malls or supermarkets. Avoid street ATMs.</template>
+    </category>
 
-    <!-- Zones Dangereuses -->
-    <category>
-        <pattern>ZONES DANGEREUSES</pattern>
-        <template>
-            Évitez les quartiers comme Tepito, La Lagunilla et Iztapalapa, surtout la nuit.
-            Restez dans les zones touristiques comme Roma, Condesa, Polanco et Reforma.
-        </template>
-    </category>
-    <category><pattern>OU NE PAS ALLER</pattern><template><srai>ZONES DANGEREUSES</srai></template></category>
+    <category><pattern>MONEY</pattern><template><srai>ATM</srai></template></category>
 
-    <!-- Questions Spécifiques -->
-    <category>
-        <pattern>UBER EST IL SUR</pattern>
-        <template>Oui, Uber et Didi sont recommandés pour les touristes. Vérifiez toujours la plaque d'immatriculation.</template>
-    </category>
-    <category>
-        <pattern>POLICE</pattern><template>Urgence : 911. Police Touristique : 55 5207 4155.</template>
-    </category>
-    <category>
-        <pattern>FEMMES</pattern>
-        <template>Le Métro et le Métrobus disposent de wagons réservés aux femmes et aux enfants (généralement en tête de train). Utilisez-les !</template>
-    </category>
-    
 </aiml>

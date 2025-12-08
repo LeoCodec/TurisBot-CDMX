@@ -12,6 +12,12 @@
         </template>
     </category>
 
+    <!-- Acepta frases como "hola bro", "hola turisbot" -->
+    <category>
+        <pattern>HOLA *</pattern>
+        <template><srai>HOLA</srai></template>
+    </category>
+
     <!-- Variaciones Formales -->
     <category><pattern>BUENOS DIAS</pattern><template><srai>HOLA</srai></template></category>
     <category><pattern>BUENAS TARDES</pattern><template><srai>HOLA</srai></template></category>
@@ -20,7 +26,6 @@
     <category><pattern>ENCANTADO</pattern><template>¡Igualmente! Estoy para servirte.</template></category>
 
     <!-- Variaciones Coloquiales (Mexicanismos) -->
-    <category><pattern></pattern><template><srai>HOLA</srai></template></category>
     <category><pattern>QUE ONDA</pattern><template>¡Qué onda! ¿En qué te ayudo hoy?</template></category>
     <category><pattern>QUE HUBO</pattern><template>¡Quiúbole! Aquí andamos al pendiente. ¿Qué necesitas?</template></category>
     <category><pattern>QUIUBOLE</pattern><template><srai>QUE HUBO</srai></template></category>
@@ -33,38 +38,41 @@
         <pattern>ME LLAMO *</pattern>
         <template>¡Mucho gusto, <star/>! ¿En qué puedo ayudarte en tu visita?</template>
     </category>
-    <category><pattern>SOY *</pattern><template><srai>ME LLAMO <star/></srai></template></category>
 
-    <!-- 2. DESPEDIDAS (De formal a muy coloquial) -->
+    <category>
+        <pattern>SOY *</pattern>
+        <template><srai>ME LLAMO <star/></srai></template>
+    </category>
+
+    <!-- 2. DESPEDIDAS -->
     <category>
         <pattern>ADIOS</pattern>
         <template>¡Adiós! Que disfrutes mucho la ciudad. ¡Cuidado en el camino!</template>
     </category>
 
-    <!-- Variaciones -->
     <category><pattern>HASTA LUEGO</pattern><template>¡Hasta luego! Aquí estaré si necesitas más tips.</template></category>
     <category><pattern>NOS VEMOS</pattern><template>¡Sale! Nos vemos luego.</template></category>
     <category><pattern>CHAO</pattern><template><srai>ADIOS</srai></template></category>
     <category><pattern>CUIDATE</pattern><template>¡Igualmente! Disfruta tu viaje.</template></category>
     <category><pattern>TE ESCRIBO LUEGO</pattern><template>Claro, aquí estaré pendiente.</template></category>
 
-    <!-- Mexicanismos de despedida -->
+    <!-- Mexicanismos -->
     <category><pattern>AHI NOS VIDRIOS</pattern><template>¡Cámara! Ahí nos vidrios. 👓</template></category>
     <category><pattern>AHI TE VES</pattern><template>¡Sale vale! Con cuidado.</template></category>
 
-    
-    <!--  INFO DEL BOT (IDENTIDAD) -->
-    
+    <!-- INFO DEL BOT -->
     <category>
         <pattern>QUIEN ERES</pattern>
         <template>Soy TurisBot-CDMX, una IA diseñada para que no te pierdas en esta ciudad tan grande.</template>
     </category>
+
     <category><pattern>QUE ERES</pattern><template><srai>QUIEN ERES</srai></template></category>
 
     <category>
         <pattern>QUIEN TE CREO</pattern>
         <template>Fui desarrollado por Leo Gael Cruz Castañeda, futuro ingeniero de la UVM.</template>
     </category>
+
     <category><pattern>AUTOR</pattern><template><srai>QUIEN TE CREO</srai></template></category>
 
     <category>
@@ -72,9 +80,7 @@
         <template>¡Sí! Listos para el Mundial 2026 ⚽. Te ayudo a llegar al Estadio Azteca cuando quieras.</template>
     </category>
 
-    
-    <!--  ENGLISH: GREETINGS & FAREWELLS -->
-    
+    <!--  ENGLISH -->
     <category>
         <pattern>HI</pattern>
         <template>
@@ -83,8 +89,7 @@
             What's up?
         </template>
     </category>
-    
-    <!-- Variations -->
+
     <category><pattern>HELLO</pattern><template><srai>HI</srai></template></category>
     <category><pattern>HEY</pattern><template><srai>HI</srai></template></category>
     <category><pattern>GOOD MORNING</pattern><template><srai>HI</srai></template></category>
@@ -97,52 +102,49 @@
         <pattern>BYE</pattern>
         <template>Goodbye! Enjoy Mexico City and stay safe!</template>
     </category>
+
     <category><pattern>GOODBYE</pattern><template><srai>BYE</srai></template></category>
     <category><pattern>SEE YOU</pattern><template>See you later!</template></category>
     <category><pattern>TAKE CARE</pattern><template>You too! Safe travels.</template></category>
     <category><pattern>CATCH YOU LATER</pattern><template>For sure! I'm here 24/7.</template></category>
 
-    <!--  DEUTSCH/Alemán: BEGRÜSSUNG & ABSCHIED -->
-
+    <!-- ALEMAN (Deutsch) -->
     <category>
         <pattern>HALLO</pattern>
         <template>Hallo! Ich bin TurisBot CDMX 🇲🇽. Wie kann ich helfen?</template>
     </category>
-    
-    <!-- Variationen -->
+
     <category><pattern>GUTEN MORGEN</pattern><template><srai>HALLO</srai></template></category>
     <category><pattern>GUTEN TAG</pattern><template><srai>HALLO</srai></template></category>
     <category><pattern>WIE GEHTS</pattern><template>Mir geht es gut, danke! Und Ihnen?</template></category>
     <category><pattern>WAS GEHT</pattern><template>Alles gut! Bereit für Mexiko-Stadt?</template></category>
     <category><pattern>FREUT MICH</pattern><template>Ganz meinerseits! Willkommen.</template></category>
 
-    <!-- Abschied -->
     <category>
         <pattern>TSCHUESS</pattern>
         <template>Tschüss! Genießen Sie Ihren Aufenthalt.</template>
     </category>
+
     <category><pattern>AUF WIEDERSEHEN</pattern><template><srai>TSCHUESS</srai></template></category>
     <category><pattern>BIS SPATER</pattern><template>Bis später!</template></category>
     <category><pattern>MACHS GUT</pattern><template>Danke, gleichfalls!</template></category>
 
-    <!--  FRANÇAIS/Frances: SALUTATIONS & ADIEUX -->
-
+    <!-- FRANCÉS -->
     <category>
         <pattern>SALUT</pattern>
         <template>Salut ! Je suis TurisBot CDMX 🇲🇽. Je peux vous aider ?</template>
     </category>
 
-    <!-- Variations -->
     <category><pattern>BONJOUR</pattern><template><srai>SALUT</srai></template></category>
     <category><pattern>CA VA</pattern><template>Ça va bien ! Et vous ?</template></category>
     <category><pattern>QUOI DE NEUF</pattern><template>Pas grand chose, prêt à vous guider !</template></category>
     <category><pattern>ENCHANTE</pattern><template>Enchanté ! Bienvenue à Mexico.</template></category>
 
-    <!-- Adieux -->
     <category>
         <pattern>AU REVOIR</pattern>
         <template>Au revoir ! Profitez de votre visite.</template>
     </category>
+
     <category><pattern>A PLUS</pattern><template>À plus tard !</template></category>
     <category><pattern>PRENDS SOIN DE TOI</pattern><template>Merci, vous aussi !</template></category>
 
