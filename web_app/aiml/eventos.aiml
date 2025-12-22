@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1">
+
+    <!-- MUNDIAL 2026 -->
+    <category>
+        <pattern>MUNDIAL</pattern>
+        <template>
+            <div class="bot-card">
+                <img src="/static/image/Azteca.jpg" class="card-img" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">Mundial 2026 ⚽</h3>
+                    <p class="card-desc">¡Estadio Azteca ha'e pe sede! Prepárate para el Mundial en CDMX.</p>
+                    <a href="https://www.google.com/maps/search/Estadio+Azteca" class="card-btn" target="_blank">📍 Ver Estadio</a>
+                </div>
+            </div>
+        </template>
+    </category>
+
+    <!-- FORMULA 1 -->
+    <category>
+        <pattern>F1</pattern>
+        <template>
+            <div class="bot-card">
+                <img src="/static/image/F1.jpg" class="card-img" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">Fórmula 1 🏎️</h3>
+                    <p class="card-desc">Gran Premio de México en el Autódromo Hermanos Rodríguez.</p>
+                    <a href="https://www.google.com/maps/search/Autodromo+Hermanos+Rodriguez" class="card-btn" target="_blank">📍 Cómo llegar</a>
+                </div>
+            </div>
+        </template>
+    </category>
+
+</aiml>

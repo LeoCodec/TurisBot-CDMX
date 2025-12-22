@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ============================================
-    // FUNCIONES DEL CHAT (SIN CAMBIOS)
+    // FUNCIONES DEL CHAT
     // ============================================
 
     function appendMessage(who, text) {
@@ -61,7 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!msg) return;
         appendMessage('user', msg);
         input.value = "";
+        procesarMensaje(msg);
+    }
 
+    // Función separada para procesar el envío (usada por botón y por chips)
+    function procesarMensaje(msg) {
         const form = new URLSearchParams();
         form.append("msg", msg);
         form.append("lang", lang);
@@ -83,6 +87,15 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(err);
         });
     }
+
+    // ============================================
+    // NUEVA FUNCIÓN PARA LOS CHIPS (BOTONES DE OPCIONES)
+    // ============================================
+    // Esta función se llama desde el HTML generado por AIML (onclick="enviarTexto('1')")
+    window.enviarTexto = function(texto) {
+        appendMessage('user', texto); // Muestra lo que "dijo" el usuario
+        procesarMensaje(texto);       // Lo envía al servidor
+    };
 
     sendBtn.addEventListener("click", sendMessage);
     input.addEventListener("keydown", function (e) {

@@ -1,216 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml version="1.0.1">
 
-
-    <!--  ESPAÑOL: TURISMO Y GASTRONOMÍA (COMPLETO) -->
-
-    <!-- MENÚ PRINCIPAL DE TURISMO -->
+    <!-- MENÚ PRINCIPAL -->
     <category>
         <pattern>QUE VISITAR</pattern>
         <template>
-            La CDMX tiene de todo. Te recomiendo:
-             **Museos:** Antropología, Castillo de Chapultepec, Soumaya.
-             **Plazas:** Antara, Perisur, Santa Fe.
-             **Comida:** Tacos al pastor, quesadillas, esquites.
-             **Zonas:** Coyoacán, Xochimilco, Centro Histórico.
-            ¿Sobre qué quieres saber más?
+            ¡La Ciudad de México es increíble! Aquí tienes los museos que funcionan con imágenes y mapas:
+            <div class="suggestions">
+                <button class="chip" onclick="enviarTexto('1')">🗿 Antropología</button>
+                <button class="chip" onclick="enviarTexto('2')">🖼️ Soumaya</button>
+                <button class="chip" onclick="enviarTexto('3')">🎭 Bellas Artes</button>
+                <button class="chip" onclick="enviarTexto('4')">🛕 Templo Mayor</button>
+            </div>
         </template>
     </category>
-    <category><pattern>LUGARES TURISTICOS</pattern><template><srai>QUE VISITAR</srai></template></category>
-    <category><pattern>DONDE IR</pattern><template><srai>QUE VISITAR</srai></template></category>
 
-    <!--  1. MUSEOS (TOP LIST) -->
+    <!-- NÚMEROS RÁPIDOS -->
+    <category><pattern>1</pattern><template><srai>MUSEO NACIONAL DE ANTROPOLOGIA</srai></template></category>
+    <category><pattern>2</pattern><template><srai>MUSEO SOUMAYA</srai></template></category>
+    <category><pattern>3</pattern><template><srai>PALACIO DE BELLAS ARTES</srai></template></category>
+    <category><pattern>4</pattern><template><srai>MUSEO DEL TEMPLO MAYOR</srai></template></category>
+
+    <!-- TARJETA: ANTROPOLOGÍA -->
     <category>
-        <pattern>MUSEOS</pattern>
+        <pattern>MUSEO NACIONAL DE ANTROPOLOGIA</pattern>
         <template>
-            Los museos imperdibles son:
-            1. **Museo Nacional de Antropología** (El más visitado).
-            2. **Castillo de Chapultepec** (Historia y vistas increíbles).
-            3. **Palacio de Bellas Artes** (Arte y murales).
-            4. **Museo Frida Kahlo** (Casa Azul).
-            5. **Museo Soumaya** (Arte y arquitectura moderna, entrada gratis).
+            <div class="bot-card">
+                <img src="/static/image/antropologia.jpg" class="card-img" alt="Antropología">
+                <div class="card-body">
+                    <h3 class="card-title">Museo de Antropología</h3>
+                    <p class="card-desc">El museo más importante de México. Hogar de la Piedra del Sol.</p>
+                    <div class="info-row">🕒 <b>Horario:</b> Mar-Dom 9am - 6pm.</div>
+                    <div class="info-row">💵 <b>Costo:</b> $95 MXN.</div>
+                    <a href="https://goo.gl/maps/Qj5wXj5wXj5wXj5w" target="_blank" class="card-btn">📍 Abrir en Mapa</a>
+                </div>
+            </div>
         </template>
     </category>
 
-    <category><pattern>MUSEO DE ANTROPOLOGIA</pattern><template>Es el museo más importante de México. Alberga la Piedra del Sol (Calendario Azteca) y tesoros mayas. Ubicado en el Bosque de Chapultepec.</template></category>
-    <category><pattern>CASTILLO DE CHAPULTEPEC</pattern><template>El único castillo real en América. Fue hogar de Maximiliano y Carlota. Tiene vistas espectaculares de Reforma.</template></category>
-    <category><pattern>BELLAS ARTES</pattern><template>El Palacio de Bellas Artes es el máximo recinto cultural. Su arquitectura es Art Nouveau por fuera y Art Déco por dentro. ¡Entra a ver los murales!</template></category>
-    <category><pattern>FRIDA KAHLO</pattern><template>La Casa Azul en Coyoacán es donde nació y murió Frida. ⚠️ OJO: Debes comprar boletos en línea con semanas de anticipación.</template></category>
-    <category><pattern>SOUMAYA</pattern><template>Museo de arquitectura impresionante en Polanco. Tiene obras de Rodin y Dalí. ¡La entrada es gratuita todos los días!</template></category>
-
-    <!--  2. PLAZAS COMERCIALES (SHOPPING) -->
-
+    <!-- TARJETA: SOUMAYA -->
     <category>
-        <pattern>PLAZAS COMERCIALES</pattern>
+        <pattern>MUSEO SOUMAYA</pattern>
         <template>
-            Para compras te recomiendo:
-             **Lujo:** Antara (Polanco), Artz Pedregal.
-             **Gigantes:** Centro Santa Fe (la más grande), Perisur.
-             **Céntricas:** Parque Delta, Reforma 222.
-             **Sur:** Oasis Coyoacán, Mítikah.
+            <div class="bot-card">
+                <img src="/static/image/soumaya.jpg" class="card-img" alt="Soumaya">
+                <div class="card-body">
+                    <h3 class="card-title">Museo Soumaya</h3>
+                    <p class="card-desc">Arquitectura moderna en Polanco. Obras de Dalí y Rodin.</p>
+                    <div class="info-row">🕒 <b>Horario:</b> Lun-Dom 10:30am - 6:30pm.</div>
+                    <div class="info-row">💵 <b>Costo:</b> ¡Gratis!</div>
+                    <a href="https://goo.gl/maps/soumaya" target="_blank" class="card-btn">📍 Abrir en Mapa</a>
+                </div>
+            </div>
         </template>
     </category>
-    <category><pattern>DONDE COMPRAR</pattern><template><srai>PLAZAS COMERCIALES</srai></template></category>
-    <category><pattern>SHOPPING</pattern><template><srai>PLAZAS COMERCIALES</srai></template></category>
 
-    <!--  3. GASTRONOMÍA (TACOS Y ANTOJITOS) -->
-
+    <!-- TARJETA: BELLAS ARTES -->
     <category>
-        <pattern>COMIDA</pattern>
+        <pattern>PALACIO DE BELLAS ARTES</pattern>
         <template>
-            ¡En CDMX se come delicioso! Tienes que probar:
-             **Tacos al Pastor:** Carne de cerdo adobada con piña.
-             **Esquites:** Granos de elote con mayonesa, queso y chile.
-             **Quesadillas:** ¡Ojo! Aquí pueden ir sin queso (pídelas "con queso").
-             **Torta de Tamal:** Conocida como "Guajolota", desayuno típico.
+            <div class="bot-card">
+                <img src="/static/image/bellas_artes.jpg" class="card-img" alt="Bellas Artes">
+                <div class="card-body">
+                    <h3 class="card-title">Palacio de Bellas Artes</h3>
+                    <p class="card-desc">El recinto cultural más bello. Murales de Rivera y Siqueiros.</p>
+                    <div class="info-row">🕒 <b>Horario:</b> Mar-Dom 10am - 6pm.</div>
+                    <div class="info-row">💵 <b>Costo:</b> $90 MXN (Domingos gratis).</div>
+                    <a href="https://goo.gl/maps/bellasartes" target="_blank" class="card-btn">📍 Abrir en Mapa</a>
+                </div>
+            </div>
         </template>
     </category>
 
-    <category>
-        <pattern>TACOS</pattern>
-        <template>
-            El rey es el **Taco al Pastor**.
-            Recomendaciones: El Califa, El Tizoncito, o los puestos de la calle Lorenzo Boturini.
-            También prueba los de Suadero y Canasta.
-        </template>
-    </category>
-
-    <category>
-        <pattern>DULCES</pattern>
-        <template>
-            Prueba los dulces típicos:
-             **Mazapán:** De cacahuate (maní).
-             **Alegrías:** Amaranto con miel.
-             **Borrachitos:** Dulces suaves con licor.
-             **Obleas:** Con cajeta (dulce de leche).
-             **Tamarindo:** Pulparindo o pica-fresa (con chile).
-        </template>
-    </category>
-
-    <!--  4. ZONAS POR ALCALDÍA (ALCALDÍAS SEGURAS) -->
-    <category>
-        <pattern>COYOACAN</pattern>
-        <template>Barrio colonial y bohemio. Visita el Mercado de Coyoacán (tostadas), la Casa Azul y toma un café en el Jardín Centenario.</template>
-    </category>
-
-    <category>
-        <pattern>XOCHIMILCO</pattern>
-        <template>Famoso por sus canales y trajineras (barcos coloridos). Ve a los embarcaderos Nativitas o Las Flores. ¡Lleva tu propia música y comida si quieres!</template>
-    </category>
-
-    <category>
-        <pattern>POLANCO</pattern>
-        <template>Zona exclusiva y segura. Ideal para caminar, ir de compras a Masaryk (tiendas de lujo) y visitar el Museo Soumaya.</template>
-    </category>
-
-    <category>
-        <pattern>ROMA CONDESA</pattern>
-        <template>Las colonias de moda. Llenas de cafés, bares, arquitectura Art Déco y parques (Parque México, Parque España). Muy seguras para caminar.</template>
-    </category>
-
-    <category>
-        <pattern>CENTRO HISTORICO</pattern>
-        <template>El corazón de la ciudad. Visita el Zócalo, Catedral, Templo Mayor y Bellas Artes. Ve de día para disfrutarlo mejor.</template>
-    </category>
-
-    <!--  ENGLISH/Ingles: TOURISM (EXPANDED) -->
-    <category>
-        <pattern>WHAT TO VISIT</pattern>
-        <template>
-            Top places in Mexico City:
-             **Museums:** Anthropology, Frida Kahlo, Soumaya.
-             **Shopping:** Antara, Santa Fe, Perisur.
-             **Food:** Tacos al Pastor, Esquites (Corn).
-             **Areas:** Coyoacan, Xochimilco (Floating Gardens), Historic Center.
-        </template>
-    </category>
-
-    <category>
-        <pattern>MUSEUMS</pattern>
-        <template>
-            Must-see museums:
-            1. **Anthropology Museum:** Aztec & Maya treasures.
-            2. **Frida Kahlo (Blue House):** Buy tickets online weeks ahead!
-            3. **Soumaya:** Amazing architecture and free entry.
-            4. **Chapultepec Castle:** History and views.
-        </template>
-    </category>
-
-    <category>
-        <pattern>FOOD</pattern>
-        <template>
-            You must try:
-             **Tacos al Pastor:** Pork with pineapple.
-             **Esquites:** Corn cup with mayo, cheese, and chili.
-             **Pozole:** Traditional hominy soup.
-             **Spicy Candy:** Tamarind and chili sweets.
-        </template>
-    </category>
-
-    <category>
-        <pattern>SHOPPING</pattern>
-        <template>
-            Best Malls:
-            - **Antara** (Polanco): Open-air luxury.
-            - **Perisur** (South): Large and traditional.
-            - **Santa Fe**: The biggest mall in Latin America.
-            - **Oasis Coyoacan**: Beautiful garden setting.
-        </template>
-    </category>
-
-    <!--  DEUTSCH: TOURISMUS -->
-    <category>
-        <pattern>WAS BESUCHEN</pattern>
-        <template>
-            Top-Orte in Mexiko-Stadt:
-             **Museen:** Anthropologie, Frida Kahlo, Soumaya.
-             **Einkaufen:** Antara, Santa Fe.
-             **Essen:** Tacos al Pastor, Esquites.
-             **Gegenden:** Coyoacan, Xochimilco.
-        </template>
-    </category>
-
-    <category>
-        <pattern>MUSEEN</pattern>
-        <template>
-            Empfohlene Museen:
-            1. **Anthropologie Museum** (Azteken & Maya).
-            2. **Frida Kahlo Haus** (Tickets online kaufen!).
-            3. **Soumaya** (Kostenloser Eintritt).
-        </template>
-    </category>
-
-    <category>
-        <pattern>ESSEN</pattern>
-        <template>Probieren Sie Tacos al Pastor (Schweinefleisch mit Ananas) und Esquites (Mais im Becher).</template>
-    </category>
-
-    <!--  FRANÇAIS: TOURISME -->
-
-    <category>
-        <pattern>QUE VISITER</pattern>
-        <template>
-            Lieux incontournables :
-             **Musées :** Anthropologie, Frida Kahlo, Soumaya.
-             **Shopping :** Antara, Santa Fe.
-             **Nourriture :** Tacos al Pastor, Esquites.
-             **Quartiers :** Coyoacan, Xochimilco.
-        </template>
-    </category>
-
-    <category>
-        <pattern>MUSEES</pattern>
-        <template>
-            Musées à voir :
-            1. **Musée d'Anthropologie** (Trésors Aztèques).
-            2. **Maison Bleue (Frida Kahlo)** : Réservez en ligne !
-            3. **Soumaya** : Entrée gratuite.
-        </template>
-    </category>
-
-    <category>
-        <pattern>NOURRITURE</pattern>
-        <template>Essayez les Tacos al Pastor (porc à l'ananas) et les Esquites (maïs).</template>
-    </category>
-
+    <category><pattern>MUSEOS</pattern><template><srai>QUE VISITAR</srai></template></category>
 </aiml>
