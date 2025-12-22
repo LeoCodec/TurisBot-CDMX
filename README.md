@@ -7,7 +7,7 @@ Chatbot turístico para la Ciudad de México
 ## 🧠 ¿Qué es TurisBot-CDMX?
 
 TurisBot-CDMX es un asistente turístico desarrollado en Python que permite consultar información sobre lugares, transporte, museos y seguridad dentro de la Ciudad de México.  
-El proyecto incluye una **aplicación web** y una **aplicación móvil**, ambas conectadas al mismo backend mediante una API en Flask.
+El proyecto incluye una **aplicación web**, ambas conectadas al mismo backend mediante una API en Flask.
 
 ---
 
